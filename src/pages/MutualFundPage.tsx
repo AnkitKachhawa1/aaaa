@@ -1,6 +1,89 @@
 import React, { useState } from 'react';
 import { FileText, AlertTriangle, HelpCircle } from 'lucide-react';
 
+const faqItems = [
+  {
+    question: 'મ્યુચ્યુઅલ ફંડમાં ન્યુનતમ રોકાણ કેટલું હોવું જોઈએ?',
+    answer: 'SIP માટે ₹500 થી શરૂઆત કરી શકાય છે, અને એકમુશ્ત રોકાણ માટે ₹5000 થી શરૂઆત કરી શકાય છે.',
+  },
+  {
+    question: 'શું મ્યુચ્યુઅલ ફંડમાંથી પૈસા વહેલા કાઢી શકાય?',
+    answer: 'હા, મોટાભાગના ઓપન-એન્ડેડ ફંડ્સમાંથી પૈસા કોઈપણ સમયે કાઢી શકાય છે, પરંતુ કેટલાક ફંડ્સમાં એક્ઝિટ લોડ લાગુ થઈ શકે છે.',
+  },
+  {
+    question: 'મ્યુચ્યુઅલ ફંડમાં રોકાણ કરવા માટે કઈ ઉંમર હોવી જરૂરી છે?',
+    answer: '18 વર્ષથી ઉપરની કોઈપણ વ્યક્તિ મ્યુચ્યુઅલ ફંડમાં રોકાણ કરી શકે છે. માતા-પિતાના નામે બાળકો માટે પણ રોકાણ કરી શકાય છે.',
+  },
+];
+
+const documentItems = [
+  'પાન કાર્ડ',
+  'આધાર કાર્ડ',
+  'બેંક પાસબુક / કેન્સલ ચેક',
+  'ફોટોગ્રાફ',
+  'ઈમેઈલ આઈડી અને મોબાઈલ નંબર',
+];
+
+const AccordionList = ({
+  icon,
+  title,
+  items,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  items: string[];
+}) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border rounded-lg">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full text-left p-4 font-medium text-gray-900 hover:bg-gray-50 flex justify-between items-center"
+      >
+        <span className="flex items-center gap-2">
+          {icon}
+          {title}
+        </span>
+        <span>{open ? '−' : '+'}</span>
+      </button>
+      {open && (
+        <ul className="p-4 pt-0 space-y-2 text-gray-600 list-disc list-inside">
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+const FAQAccordion = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div className="space-y-4">
+      {faqItems.map((item, index) => (
+        <div key={index} className="border rounded-lg">
+          <button
+            onClick={() => toggle(index)}
+            className="w-full text-left p-4 font-medium text-gray-900 hover:bg-gray-50 flex justify-between items-center"
+          >
+            {item.question}
+            <span>{openIndex === index ? '−' : '+'}</span>
+          </button>
+          {openIndex === index && (
+            <div className="p-4 pt-0 text-gray-600">{item.answer}</div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const MutualFundPage: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -9,7 +92,7 @@ const MutualFundPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       const response = await fetch('https://formspree.io/f/mqabenan', {
         method: 'POST',
@@ -22,7 +105,7 @@ const MutualFundPage: React.FC = () => {
           service: 'Mutual Fund Inquiry'
         })
       });
-      
+
       if (response.ok) {
         alert(`Thank you ${formData.name}! We will contact you at ${formData.number}`);
         setFormData({ name: '', number: '' });
@@ -51,34 +134,11 @@ const MutualFundPage: React.FC = () => {
           </h2>
 
           <div className="space-y-8">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <FileText size={24} className="text-primary mr-2" />
-                જરૂરી દસ્તાવેજો
-              </h3>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
-                  પાન કાર્ડ
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
-                  આધાર કાર્ડ
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
-                  બેંક પાસબુક / કેન્સલ ચેક
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
-                  ફોટોગ્રાફ
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
-                  ઈમેઈલ આઈડી અને મોબાઈલ નંબર
-                </li>
-              </ul>
-            </div>
+            <AccordionList
+              icon={<FileText size={24} className="text-primary" />}
+              title="જરૂરી દસ્તાવેજો"
+              items={documentItems}
+            />
 
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
@@ -86,18 +146,9 @@ const MutualFundPage: React.FC = () => {
                 રિસ્ક ફેક્ટર્સ
               </h3>
               <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span>
-                  માર્કેટ રિસ્ક: બજારમાં ઉતાર-ચઢાવને કારણે રોકાણની કિંમતમાં ફેરફાર થઈ શકે છે
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span>
-                  લિક્વિડિટી રિસ્ક: કેટલાક ફંડ્સમાંથી પૈસા તરત કાઢવા મુશ્કેલ હોઈ શકે છે
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span>
-                  ક્રેડિટ રિસ્ક: કંપનીઓની નાણાકીય સ્થિતિમાં ફેરફાર થવાથી રોકાણ પર અસર થઈ શકે છે
-                </li>
+                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> માર્કેટ રિસ્ક: બજારમાં ઉતાર-ચઢાવને કારણે રોકાણની કિંમતમાં ફેરફાર થઈ શકે છે</li>
+                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> લિક્વિડિટી રિસ્ક: કેટલાક ફંડ્સમાંથી પૈસા તરત કાઢવા મુશ્કેલ હોઈ શકે છે</li>
+                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> ક્રેડિટ રિસ્ક: કંપનીઓની નાણાકીય સ્થિતિમાં ફેરફાર થવાથી રોકાણ પર અસર થઈ શકે છે</li>
               </ul>
             </div>
 
@@ -106,25 +157,12 @@ const MutualFundPage: React.FC = () => {
                 <HelpCircle size={24} className="text-primary mr-2" />
                 સામાન્ય પ્રશ્નો
               </h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-medium text-gray-900 mb-2">મ્યુચ્યુઅલ ફંડમાં ન્યુનતમ રોકાણ કેટલું હોવું જોઈએ?</h4>
-                  <p className="text-gray-600">SIP માટે ₹500 થી શરૂઆત કરી શકાય છે, અને એકમુશ્ત રોકાણ માટે ₹5000 થી શરૂઆત કરી શકાય છે.</p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-gray-900 mb-2">શું મ્યુચ્યુઅલ ફંડમાંથી પૈસા વહેલા કાઢી શકાય?</h4>
-                  <p className="text-gray-600">હા, મોટાભાગના ઓપન-એન્ડેડ ફંડ્સમાંથી પૈસા કોઈપણ સમયે કાઢી શકાય છે, પરંતુ કેટલાક ફંડ્સમાં એક્ઝિટ લોડ લાગુ થઈ શકે છે.</p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-gray-900 mb-2">મ્યુચ્યુઅલ ફંડમાં રોકાણ કરવા માટે કઈ ઉંમર હોવી જરૂરી છે?</h4>
-                  <p className="text-gray-600">18 વર્ષથી ઉપરની કોઈપણ વ્યક્તિ મ્યુચ્યુઅલ ફંડમાં રોકાણ કરી શકે છે. માતા-પિતાના નામે બાળકો માટે પણ રોકાણ કરી શકાય છે.</p>
-                </div>
-              </div>
+              <FAQAccordion />
             </div>
           </div>
         </div>
       </section>
-      
+
       {/* Simple Contact Form */}
       <section>
         <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
@@ -134,7 +172,7 @@ const MutualFundPage: React.FC = () => {
           <p className="text-gray-600 mb-6">
             મ્યુચ્યુઅલ ફંડ વિશે વધુ માહિતી માટે તમારી વિગતો આપો અને અમે તમારો સંપર્ક કરીશું.
           </p>
-          
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -151,7 +189,7 @@ const MutualFundPage: React.FC = () => {
                 placeholder="તમારું પૂરું નામ"
               />
             </div>
-            
+
             <div>
               <label htmlFor="number" className="block text-sm font-medium text-gray-700 mb-1">
                 મોબાઈલ નંબર *
@@ -168,7 +206,7 @@ const MutualFundPage: React.FC = () => {
                 placeholder="1234567890"
               />
             </div>
-            
+
             <button
               type="submit"
               className="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors font-medium"
