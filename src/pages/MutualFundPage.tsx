@@ -1,122 +1,49 @@
-import React from 'react';
-import { Landmark, PieChart, TrendingUp, Shield, ArrowRight, FileText, AlertTriangle, HelpCircle } from 'lucide-react';
-import LeadForm from '../components/LeadForm';
+import React, { useState } from 'react';
+import { FileText, AlertTriangle, HelpCircle } from 'lucide-react';
 
 const MutualFundPage: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    number: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch('https://formspree.io/f/mqabenan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          number: formData.number,
+          service: 'Mutual Fund Inquiry'
+        })
+      });
+      
+      if (response.ok) {
+        alert(`Thank you ${formData.name}! We will contact you at ${formData.number}`);
+        setFormData({ name: '', number: '' });
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <div className="slide-in">
-      <section className="mb-12">
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-          <div className="md:flex">
-            <div className="md:w-1/2 p-6 md:p-8">
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Expert Mutual Fund Advisory Services
-              </h1>
-              <p className="text-gray-600 mb-6">
-                Our professional mutual fund advisory services help you make informed investment decisions,
-                maximize returns, and achieve your financial goals. We offer personalized strategies
-                tailored to your risk profile and investment horizon.
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-                    <PieChart size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">Diversified Portfolio</h3>
-                    <p className="text-sm text-gray-500">Spread risk across multiple assets</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-                    <TrendingUp size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">Growth-focused</h3>
-                    <p className="text-sm text-gray-500">Strategies for long-term wealth</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-                    <Landmark size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">Tax Efficient</h3>
-                    <p className="text-sm text-gray-500">Optimize returns through tax planning</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-                    <Shield size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">Risk Management</h3>
-                    <p className="text-sm text-gray-500">Protect capital while growing assets</p>
-                  </div>
-                </div>
-              </div>
-              
-              <a href="#lead-form" className="btn-primary inline-flex items-center">
-                <span>Get Started Today</span>
-                <ArrowRight size={16} className="ml-2" />
-              </a>
-            </div>
-            
-            <div className="md:w-1/2 bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center p-6">
-              <img 
-                src="https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg" 
-                alt="Mutual Fund Investment" 
-                className="rounded-lg shadow-lg max-h-80 object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <section className="mb-12">
-        <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
-            Our Mutual Fund Services
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gray-50 rounded-lg p-5 hover:shadow-md transition-shadow">
-              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <PieChart size={24} className="text-primary" />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Portfolio Management</h3>
-              <p className="text-gray-600 text-sm">
-                Comprehensive portfolio management services with regular rebalancing and performance tracking.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 rounded-lg p-5 hover:shadow-md transition-shadow">
-              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <TrendingUp size={24} className="text-primary" />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Investment Advisory</h3>
-              <p className="text-gray-600 text-sm">
-                Personalized investment advice based on your financial goals, risk tolerance, and time horizon.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 rounded-lg p-5 hover:shadow-md transition-shadow">
-              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <Shield size={24} className="text-primary" />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">SIP Management</h3>
-              <p className="text-gray-600 text-sm">
-                Setup and management of Systematic Investment Plans (SIPs) for disciplined investing.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* Gujarati Q&A Content */}
       <section className="mb-12">
         <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
@@ -198,48 +125,57 @@ const MutualFundPage: React.FC = () => {
         </div>
       </section>
       
-      <section id="lead-form">
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-          <div className="md:flex">
-            <div className="md:w-1/2 p-6 md:p-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
-                Get Expert Mutual Fund Advice
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Fill out the form below and our mutual fund experts will contact you for a free consultation.
-              </p>
-              
-              <LeadForm service="mutual-fund" />
+      {/* Simple Contact Form */}
+      <section>
+        <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            સંપર્ક કરો
+          </h2>
+          <p className="text-gray-600 mb-6">
+            મ્યુચ્યુઅલ ફંડ વિશે વધુ માહિતી માટે તમારી વિગતો આપો અને અમે તમારો સંપર્ક કરીશું.
+          </p>
+          
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                નામ *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="તમારું પૂરું નામ"
+              />
             </div>
             
-            <div className="md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-200 p-6 md:p-8 flex flex-col justify-center">
-              <div className="bg-white rounded-lg p-5 shadow-sm mb-5">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
-                  <div>
-                    <h4 className="font-medium">Priya Sharma</h4>
-                    <p className="text-sm text-gray-500">Financial Advisor</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-gray-600 text-sm italic">
-                  "The mutual fund advisory services helped me build a diversified portfolio that's grown consistently over the past 3 years."
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-lg p-5 shadow-sm">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
-                  <div>
-                    <h4 className="font-medium">Rajesh Patel</h4>
-                    <p className="text-sm text-gray-500">Business Owner</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-gray-600 text-sm italic">
-                  "Their expertise in SIP management has made investing simple and effective. Highly recommended!"
-                </p>
-              </div>
+            <div>
+              <label htmlFor="number" className="block text-sm font-medium text-gray-700 mb-1">
+                મોબાઈલ નંબર *
+              </label>
+              <input
+                type="tel"
+                id="number"
+                name="number"
+                value={formData.number}
+                onChange={handleChange}
+                required
+                pattern="[0-9]{10}"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="1234567890"
+              />
             </div>
-          </div>
+            
+            <button
+              type="submit"
+              className="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors font-medium"
+            >
+              સબમિટ કરો
+            </button>
+          </form>
         </div>
       </section>
     </div>
