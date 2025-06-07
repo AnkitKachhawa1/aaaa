@@ -1,163 +1,220 @@
-import React from 'react';
-import { FileText, ClipboardCheck, Calculator, Calendar, ArrowRight } from 'lucide-react';
-import LeadForm from '../components/LeadForm';
+import React, { useState } from 'react';
+import { FileText, AlertTriangle, HelpCircle } from 'lucide-react';
 
+const gstFaqItems = [
+  {
+    question: 'GST રજિસ્ટ્રેશન માટે કઈ ટર્નઓવર લિમિટ છે?',
+    answer: 'સર્વિસ પ્રોવાઇડર્સ માટે ₹20 લાખ સુધી અને ગુડ્સ સપ્લાયર્સ માટે ₹40 લાખ સુધીની ટર્નઓવર લિમિટ છે. આઉટ-ઓફ-સ્ટેટ સપ્લાય અને ઈ-કોમર્સ ઑપરેટર્સ માટે કોઈ લિમિટ નથી.',
+  },
+  {
+    question: 'GST રિટર્ન કેટલી વાર ફાઇલ કરવો પડે છે?',
+    answer: 'GSTR-1 (આઉટવર્ડ સપ્લાય) માસિક/ત્રિમાસિક, GSTR-3B (સારાંશ રિટર્ન) માસિક, અને GSTR-9 (વાર્ષિક રિટર્ન) દર વર્ષે ફાઇલ કરવું પડે છે.',
+  },
+  {
+    question: 'GSTમાં લેટ ફી કેટલી લાગે છે?',
+    answer: 'GSTR-3B માટે રોજ ₹50 (CGST + SGST), મહત્તમ ₹5,000. નિલંબિત GSTIN માટે ₹10,000 (CGST + SGST) લેટ ફી લાગે છે.',
+  },
+];
+
+const gstDocumentItems = [
+  'પાન કાર્ડ',
+  'આધાર કાર્ડ',
+  'બિઝનેસ એડ્રેસ પ્રૂફ (ઇલેક્ટ્રીસીટી બીલ/રેન્ટ એગ્રીમેન્ટ)',
+  'બેંક પાસબુક / કેન્સલ ચેક',
+  'ફોટોગ્રાફ (પ્રોપ્રાયટર/પાર્ટનર/ડાયરેક્ટર)',
+  'બિઝનેસ રજિસ્ટ્રેશન પ્રૂફ'
+];
+
+const AccordionList = ({
+  icon,
+  title,
+  items,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  items: string[];
+}) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border rounded-lg">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full text-left p-4 font-medium text-gray-900 hover:bg-gray-50 flex justify-between items-center"
+      >
+        <span className="flex items-center gap-2">
+          {icon}
+          {title}
+        </span>
+        <span>{open ? '−' : '+'}</span>
+      </button>
+      {open && (
+        <ul className="p-4 pt-0 space-y-2 text-gray-600 list-disc list-inside">
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+const FAQAccordion = ({ faqItems }: { faqItems: Array<{ question: string, answer: string }> }) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div className="space-y-4">
+      {faqItems.map((item, index) => (
+        <div key={index} className="border rounded-lg">
+          <button
+            onClick={() => toggle(index)}
+            className="w-full text-left p-4 font-medium text-gray-900 hover:bg-gray-50 flex justify-between items-center"
+          >
+            {item.question}
+            <span>{openIndex === index ? '−' : '+'}</span>
+          </button>
+          {openIndex === index && (
+            <div className="p-4 pt-0 text-gray-600">{item.answer}</div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Add this section to your existing GSTPage component
 const GSTPage: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    number: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('https://formspree.io/f/mqabenan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          number: formData.number,
+          service: 'GST Inquiry'
+        })
+      });
+
+      if (response.ok) {
+        alert(`Thank you ${formData.name}! We will contact you at ${formData.number}`);
+        setFormData({ name: '', number: '' });
+      }
+    } catch (error) {
+      alert('Submission failed. Please try again.');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <div className="slide-in">
-      <section className="mb-12">
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-          <div className="md:flex">
-            <div className="md:w-1/2 p-6 md:p-8">
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Professional GST Filing Services
-              </h1>
-              <p className="text-gray-600 mb-6">
-                Our GST services ensure accurate and timely filing of your GST returns. 
-                We handle all aspects of GST compliance, allowing you to focus on your core business activities.
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-                    <FileText size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">Timely Filing</h3>
-                    <p className="text-sm text-gray-500">Never miss GST deadlines</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-                    <ClipboardCheck size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">Error-free Returns</h3>
-                    <p className="text-sm text-gray-500">Accurate documentation</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-                    <Calculator size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">Tax Optimization</h3>
-                    <p className="text-sm text-gray-500">Maximize input tax credits</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-                    <Calendar size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">Compliance Management</h3>
-                    <p className="text-sm text-gray-500">Stay updated with GST laws</p>
-                  </div>
-                </div>
-              </div>
-              
-              <a href="#gst-lead-form" className="btn-primary inline-flex items-center">
-                <span>Get Started Today</span>
-                <ArrowRight size={16} className="ml-2" />
-              </a>
-            </div>
-            
-            <div className="md:w-1/2 bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center p-6">
-              <img 
-                src="https://images.pexels.com/photos/6693661/pexels-photo-6693661.jpeg" 
-                alt="GST Filing Services" 
-                className="rounded-lg shadow-lg max-h-80 object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      
+      {/* ... Your existing GST page content ... */}
+
+      {/* Gujarati Q&A Section */}
       <section className="mb-12">
         <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
-            Our GST Services
+            GST માહિતી અને FAQ
           </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gray-50 rounded-lg p-5 hover:shadow-md transition-shadow">
-              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <FileText size={24} className="text-primary" />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">GST Registration</h3>
-              <p className="text-gray-600 text-sm">
-                Complete assistance with GST registration process, including documentation and verification.
-              </p>
+
+          <div className="space-y-8">
+            <AccordionList
+              icon={<FileText size={24} className="text-primary" />}
+              title="GST રજિસ્ટ્રેશન માટે જરૂરી દસ્તાવેજો"
+              items={gstDocumentItems}
+            />
+
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <AlertTriangle size={24} className="text-primary mr-2" />
+                GST ના મહત્વના નિયમો
+              </h3>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> 18% થી વધુ GST રેટ પર ઈનપુટ ટેક્સ ક્રેડિટનો દાવો કરવા ઇનવોઇસ માં HSN કોડ ફરજિયાત</li>
+                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> ₹50,000 થી વધુના ટ્રાન્ઝેક્શનમાં કેશમાં ચૂકવણી નહીં કરી શકાય</li>
+                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> દર 3 વર્ષે GST સર્ટિફિકેટ રિન્યુઅલ કરવું ફરજિયાત</li>
+              </ul>
             </div>
-            
-            <div className="bg-gray-50 rounded-lg p-5 hover:shadow-md transition-shadow">
-              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <ClipboardCheck size={24} className="text-primary" />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Monthly/Quarterly Returns</h3>
-              <p className="text-gray-600 text-sm">
-                Preparation and filing of monthly/quarterly GST returns (GSTR-1, GSTR-3B, etc.).
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 rounded-lg p-5 hover:shadow-md transition-shadow">
-              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <Calculator size={24} className="text-primary" />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">GST Consultation</h3>
-              <p className="text-gray-600 text-sm">
-                Expert advice on GST-related matters, including tax optimization and compliance.
-              </p>
+
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <HelpCircle size={24} className="text-primary mr-2" />
+                સામાન્ય પ્રશ્નો
+              </h3>
+              <FAQAccordion faqItems={gstFaqItems} />
             </div>
           </div>
         </div>
       </section>
-      
-      <section id="gst-lead-form">
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-          <div className="md:flex">
-            <div className="md:w-1/2 p-6 md:p-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
-                Get Professional GST Services
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Fill out the form below and our GST experts will contact you for a free consultation.
-              </p>
-              
-              <LeadForm service="gst" />
+
+      {/* Contact Form (Same format as Mutual Fund) */}
+      <section>
+        <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            GST સેવાઓ માટે સંપર્ક કરો
+          </h2>
+          <p className="text-gray-600 mb-6">
+            અમારા GST નિષ્ણાતો સાથે મફત સલાહ મેળવવા તમારી વિગતો આપો.
+          </p>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                નામ *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="તમારું પૂરું નામ"
+              />
             </div>
-            
-            <div className="md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-200 p-6 md:p-8 flex flex-col justify-center">
-              <div className="bg-white rounded-lg p-5 shadow-sm mb-5">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
-                  <div>
-                    <h4 className="font-medium">Vikram Mehta</h4>
-                    <p className="text-sm text-gray-500">Small Business Owner</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-gray-600 text-sm italic">
-                  "Their GST services have saved me countless hours and prevented any compliance issues. Highly professional team."
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-lg p-5 shadow-sm">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
-                  <div>
-                    <h4 className="font-medium">Anita Desai</h4>
-                    <p className="text-sm text-gray-500">E-commerce Seller</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-gray-600 text-sm italic">
-                  "As an online seller, GST compliance was overwhelming until I found these services. Now I can focus on growing my business."
-                </p>
-              </div>
+
+            <div>
+              <label htmlFor="number" className="block text-sm font-medium text-gray-700 mb-1">
+                મોબાઈલ નંબર *
+              </label>
+              <input
+                type="tel"
+                id="number"
+                name="number"
+                value={formData.number}
+                onChange={handleChange}
+                required
+                pattern="[0-9]{10}"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="1234567890"
+              />
             </div>
-          </div>
+
+            <button
+              type="submit"
+              className="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors font-medium"
+            >
+              સબમિટ કરો
+            </button>
+          </form>
         </div>
       </section>
     </div>
