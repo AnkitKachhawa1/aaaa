@@ -29,13 +29,13 @@ const FAQAccordion = () => {
         <div key={index} className="border rounded-lg">
           <button
             onClick={() => toggle(index)}
-            className="w-full text-left p-4 font-medium text-gray-900 hover:bg-gray-50 flex justify-between items-center"
+            className="w-full text-left p-4 hover:bg-gray-50 flex justify-between items-center"
           >
-            {item.question}
+            <span className="font-semibold text-gray-900">{item.question}</span>
             <span>{openIndex === index ? '−' : '+'}</span>
           </button>
           {openIndex === index && (
-            <div className="p-4 pt-0 text-gray-600">{item.answer}</div>
+            <div className="p-4 pt-0 text-gray-600 font-normal">{item.answer}</div>
           )}
         </div>
       ))}
@@ -88,12 +88,11 @@ const MutualFundPage: React.FC = () => {
       {/* FAQ Section */}
       <section className="mb-12">
         <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <HelpCircle className="text-primary" size={24} />
             સામાન્ય પ્રશ્નો
           </h2>
-          <div>
-            <FAQAccordion />
-          </div>
+          <FAQAccordion />
         </div>
       </section>
 
