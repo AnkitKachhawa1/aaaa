@@ -47,24 +47,24 @@ const FAQAccordion = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {faqItems.map((item, index) => (
-        <div key={index} className="border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] bg-white">
+        <div key={index} className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-white">
           <button
             onClick={() => toggle(index)}
-            className="w-full text-left p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 flex justify-between items-center"
+            className="w-full text-left p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 flex justify-between items-start"
           >
-            <span className="font-bold text-gray-900 pr-4">{item.question}</span>
-            <div className={`transform transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}>
+            <span className="font-semibold text-gray-900 pr-3 text-sm sm:text-base leading-tight">{item.question}</span>
+            <div className={`transform transition-transform duration-300 flex-shrink-0 mt-0.5 ${openIndex === index ? 'rotate-180' : ''}`}>
               <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-1 rounded-full">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
             </div>
           </button>
           {openIndex === index && (
-            <div className="p-4 pt-0 text-gray-700 font-normal bg-gradient-to-r from-white to-blue-50 border-t border-gray-100">
+            <div className="px-4 pb-4 text-gray-700 text-sm sm:text-base bg-gradient-to-r from-white to-blue-50 border-t border-gray-100">
               {typeof item.answer === 'string' ? (
                 <p className="whitespace-pre-line leading-relaxed">{item.answer}</p>
               ) : (
@@ -119,27 +119,27 @@ const MutualFundPage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
-      <div className="bg-white rounded-2xl shadow-xl p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+      <div className="px-4 py-6 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-full mr-3">
-              <HelpCircle className="w-8 h-8 text-white" />
+              <HelpCircle className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
             </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               મ્યુચ્યુઅલ ફંડ માહિતી
             </h1>
           </div>
-          <p className="text-lg text-gray-600 font-medium">વારંવાર પૂછાતા પ્રશ્નો અને સંપર્ક કરો</p>
+          <p className="text-base sm:text-lg text-gray-600 font-medium">વારંવાર પૂછાતા પ્રશ્નો અને સંપર્ક કરો</p>
         </div>
 
         {/* FAQ Section */}
-        <section className="mb-12">
-          <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl shadow-sm p-6 md:p-8">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <HelpCircle className="text-blue-600" size={24} />
+        <section className="mb-8">
+          <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <HelpCircle className="text-blue-600" size={20} />
               સામાન્ય પ્રશ્નો
             </h2>
             <FAQAccordion />
@@ -148,19 +148,19 @@ const MutualFundPage = () => {
 
         {/* Contact Form */}
         <section>
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl shadow-sm p-6 md:p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <div className="bg-gradient-to-r from-green-500 to-blue-500 p-1 rounded-full">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
               સંપર્ક કરો
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                   નામ *
                 </label>
                 <input
@@ -170,13 +170,13 @@ const MutualFundPage = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:shadow-md"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-base"
                   placeholder="તમારું પૂરું નામ"
                 />
               </div>
 
               <div>
-                <label htmlFor="number" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="number" className="block text-sm font-medium text-gray-700 mb-2">
                   મોબાઈલ નંબર *
                 </label>
                 <input
@@ -187,18 +187,18 @@ const MutualFundPage = () => {
                   onChange={handleChange}
                   required
                   pattern="[0-9]{10}"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:shadow-md"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-base"
                   placeholder="9510074375"
                 />
               </div>
 
               <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+                onClick={handleSubmit}
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-base"
               >
                 સબમિટ કરો
               </button>
-            </form>
+            </div>
           </div>
         </section>
       </div>
