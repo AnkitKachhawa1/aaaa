@@ -13,7 +13,7 @@ const Layout: React.FC = () => {
   const pageDescription = isGSTPage 
     ? 'Professional GST filing and consultation services for businesses of all sizes.'
     : 'Expert mutual fund advisory and investment management services for individuals and organizations.';
-  
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <SEO 
@@ -25,11 +25,14 @@ const Layout: React.FC = () => {
         }
       />
       <Header />
-      <Navigation />
-      <main className="flex-grow container-custom py-8">
-        <Outlet />
-      </main>
-      <Footer />
+      {/* Push content below the fixed header */}
+      <div className="pt-[260px]">
+        <Navigation />
+        <main className="container-custom py-8">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
