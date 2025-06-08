@@ -14,6 +14,14 @@ const gstFaqItems = [
     question: 'GSTમાં લેટ ફી કેટલી લાગે છે?',
     answer: 'GSTR-3B માટે રોજ ₹50 (CGST + SGST), મહત્તમ ₹5,000. નિલંબિત GSTIN માટે ₹10,000 (CGST + SGST) લેટ ફી લાગે છે.',
   },
+  {
+    question: 'GST રજિસ્ટ્રેશન માટે કેટલો સમય લાગે છે?',
+    answer: 'સામાન્ય રીતે 3-7 દિવસ લાગે છે. બધા દસ્તાવેજો સાચા હોય તો ઓનલાઈન રજિસ્ટ્રેશન ઝડપથી થઈ જાય છે.',
+  },
+  {
+    question: 'GST રિટર્ન ફાઇલ કરવામાં મોડું થાય તો શું થાય?',
+    answer: 'લેટ ફી ભરવી પડે છે. વધુ મોડું થાય તો GSTIN સસ્પેન્ડ પણ થઈ શકે છે. તેથી સમયસર રિટર્ન ફાઇલ કરવું જરૂરી છે.',
+  },
 ];
 
 const gstDocumentItems = [
@@ -22,62 +30,47 @@ const gstDocumentItems = [
   'બિઝનેસ એડ્રેસ પ્રૂફ (ઇલેક્ટ્રીસીટી બીલ/રેન્ટ એગ્રીમેન્ટ)',
   'બેંક પાસબુક / કેન્સલ ચેક',
   'ફોટોગ્રાફ (પ્રોપ્રાયટર/પાર્ટનર/ડાયરેક્ટર)',
-  'બિઝનેસ રજિસ્ટ્રેશન પ્રૂફ'
+  'બિઝનેસ રજિસ્ટ્રેશન પ્રૂફ',
+  'સહી (SIGNATURE) નો નમૂનો',
+  'ઈમેઇલ ID અને મોબાઇલ નંબર'
 ];
 
-const AccordionList = ({
-  icon,
-  title,
-  items,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  items: string[];
-}) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border rounded-lg">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full text-left p-4 font-medium text-gray-900 hover:bg-gray-50 flex justify-between items-center"
-      >
-        <span className="flex items-center gap-2">
-          {icon}
-          {title}
-        </span>
-        <span>{open ? '−' : '+'}</span>
-      </button>
-      {open && (
-        <ul className="p-4 pt-0 space-y-2 text-gray-600 list-disc list-inside">
-          {items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
+const gstRules = [
+  '18% થી વધુ GST રેટ પર ઈનપુટ ટેક્સ ક્રેડિટનો દાવો કરવા ઇનવોઇસ માં HSN કોડ ફરજિયાત',
+  '₹50,000 થી વધુના ટ્રાન્ઝેક્શનમાં કેશમાં ચૂકવણી નહીં કરી શકાય',
+  'દર 3 વર્ષે GST સર્ટિફિકેટ રિન્યુઅલ કરવું ફરજિયાત',
+  'ઇનવોઇસ માં બધી વિગતો સ્પષ્ટ અને સાચી હોવી જોઈએ',
+  'ટેક્સ ક્રેડિટ ક્લેમ કરવા માટે વેન્ડરની GSTIN વેરિફાઇ કરવી જરૂરી'
+];
 
-const FAQAccordion = ({ faqItems }: { faqItems: Array<{ question: string, answer: string }> }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+const FAQAccordion = () => {
+  const [openIndex, setOpenIndex] = useState(null);
 
-  const toggle = (index: number) => {
+  const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <div className="space-y-4">
-      {faqItems.map((item, index) => (
-        <div key={index} className="border rounded-lg">
+    <div className="space-y-3">
+      {gstFaqItems.map((item, index) => (
+        <div key={index} className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-white">
           <button
             onClick={() => toggle(index)}
-            className="w-full text-left p-4 font-medium text-gray-900 hover:bg-gray-50 flex justify-between items-center"
+            className="w-full text-left p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 flex justify-between items-start"
           >
-            {item.question}
-            <span>{openIndex === index ? '−' : '+'}</span>
+            <span className="font-semibold text-gray-900 pr-3 text-sm sm:text-base leading-tight">{item.question}</span>
+            <div className={`transform transition-transform duration-300 flex-shrink-0 mt-0.5 ${openIndex === index ? 'rotate-180' : ''}`}>
+              <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-1 rounded-full">
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
           </button>
           {openIndex === index && (
-            <div className="p-4 pt-0 text-gray-600">{item.answer}</div>
+            <div className="px-4 pb-4 text-gray-700 text-sm sm:text-base bg-gradient-to-r from-white to-blue-50 border-t border-gray-100">
+              <p className="whitespace-pre-line leading-relaxed">{item.answer}</p>
+            </div>
           )}
         </div>
       ))}
@@ -85,15 +78,15 @@ const FAQAccordion = ({ faqItems }: { faqItems: Array<{ question: string, answer
   );
 };
 
-// Add this section to your existing GSTPage component
-const GSTPage: React.FC = () => {
+const GSTPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     number: ''
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await fetch('https://formspree.io/f/mqabenan', {
         method: 'POST',
@@ -110,13 +103,15 @@ const GSTPage: React.FC = () => {
       if (response.ok) {
         alert(`Thank you ${formData.name}! We will contact you at ${formData.number}`);
         setFormData({ name: '', number: '' });
+      } else {
+        alert('Something went wrong. Please try again.');
       }
     } catch (error) {
-      alert('Submission failed. Please try again.');
+      alert('Something went wrong. Please try again.');
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -124,99 +119,126 @@ const GSTPage: React.FC = () => {
   };
 
   return (
-    <div className="slide-in">
-      {/* ... Your existing GST page content ... */}
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+      <div className="px-4 py-6 sm:px-6 lg:px-8">
+        
+        {/* Introduction */}
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+          <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+            GST (Goods and Service Tax) એ ભારતમાં લાગુ કરાયેલ એક આધુનિક ટેક્સ સિસ્ટમ છે જે બિઝનેસને સરળ બનાવે છે. આ એક અગવડ એવી ટેક્સ છે જે રાજ્ય અને કેન્દ્ર સરકારની બહુવિધ ટેક્સને એકીકૃત કરે છે.
+            <br /><br />
+            GST રજિસ્ટ્રેશન કરવાથી તમે કાયદેસર બિઝનેસ ચલાવી શકો છો, ઇનપુટ ટેક્સ ક્રેડિટ મેળવી શકો છો અને તમારા ગ્રાહકોને વેધ ઇનવોઇસ આપી શકો છો. આ તમારા બિઝનેસની વિશ્વસનીયતા વધારે છે.
+            <br /><br />
+            અહીં તમને GST સંબંધિત બધી જરૂરી માહિતી, જરૂરી દસ્તાવેજો અને મહત્વના નિયમો વિશે જાણકારી મળશે. કોઈ પણ મદદ માટે અમારો સંપર્ક કરો.
+          </p>
+        </div>
 
-      {/* Gujarati Q&A Section */}
-      <section className="mb-12">
-        <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
-            GST માહિતી અને FAQ
-          </h2>
+        {/* Documents Required Section */}
+        <section className="mb-6">
+          <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <FileText className="text-blue-600" size={20} />
+              GST રજિસ્ટ્રેશન માટે જરૂરી દસ્તાવેજો
+            </h2>
+            <ul className="space-y-2">
+              {gstDocumentItems.map((item, index) => (
+                <li key={index} className="flex items-start text-sm sm:text-base text-gray-700">
+                  <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-          <div className="space-y-8">
-            <AccordionList
-              icon={<FileText size={24} className="text-primary" />}
-              title="GST રજિસ્ટ્રેશન માટે જરૂરી દસ્તાવેજો"
-              items={gstDocumentItems}
-            />
+        {/* Important Rules Section */}
+        <section className="mb-6">
+          <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <AlertTriangle className="text-orange-500" size={20} />
+              GST ના મહત્વના નિયમો
+            </h2>
+            <ul className="space-y-3">
+              {gstRules.map((rule, index) => (
+                <li key={index} className="flex items-start text-sm sm:text-base text-gray-700">
+                  <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                  {rule}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <AlertTriangle size={24} className="text-primary mr-2" />
-                GST ના મહત્વના નિયમો
-              </h3>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> 18% થી વધુ GST રેટ પર ઈનપુટ ટેક્સ ક્રેડિટનો દાવો કરવા ઇનવોઇસ માં HSN કોડ ફરજિયાત</li>
-                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> ₹50,000 થી વધુના ટ્રાન્ઝેક્શનમાં કેશમાં ચૂકવણી નહીં કરી શકાય</li>
-                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> દર 3 વર્ષે GST સર્ટિફિકેટ રિન્યુઅલ કરવું ફરજિયાત</li>
-              </ul>
-            </div>
+        {/* FAQ Section */}
+        <section className="mb-6">
+          <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <HelpCircle className="text-blue-600" size={20} />
+              સામાન્ય પ્રશ્નો
+            </h2>
+            <FAQAccordion />
+          </div>
+        </section>
 
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <HelpCircle size={24} className="text-primary mr-2" />
-                સામાન્ય પ્રશ્નો
-              </h3>
-              <FAQAccordion faqItems={gstFaqItems} />
+        {/* Contact Form */}
+        <section>
+          <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="bg-gradient-to-r from-green-500 to-blue-500 p-1 rounded-full">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              GST સેવાઓ માટે સંપર્ક કરો
+            </h2>
+            <p className="text-gray-600 mb-6 text-sm sm:text-base">
+              અમારા GST નિષ્ણાતો સાથે મફત સલાહ મેળવવા તમારી વિગતો આપો.
+            </p>
+
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  નામ *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-base"
+                  placeholder="તમારું પૂરું નામ"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="number" className="block text-sm font-medium text-gray-700 mb-2">
+                  મોબાઈલ નંબર *
+                </label>
+                <input
+                  type="tel"
+                  id="number"
+                  name="number"
+                  value={formData.number}
+                  onChange={handleChange}
+                  required
+                  pattern="[0-9]{10}"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-base"
+                  placeholder="9510074375"
+                />
+              </div>
+
+              <button
+                onClick={handleSubmit}
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-base"
+              >
+                સબમિટ કરો
+              </button>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Contact Form (Same format as Mutual Fund) */}
-      <section>
-        <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">
-            GST સેવાઓ માટે સંપર્ક કરો
-          </h2>
-          <p className="text-gray-600 mb-6">
-            અમારા GST નિષ્ણાતો સાથે મફત સલાહ મેળવવા તમારી વિગતો આપો.
-          </p>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                નામ *
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="તમારું પૂરું નામ"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="number" className="block text-sm font-medium text-gray-700 mb-1">
-                મોબાઈલ નંબર *
-              </label>
-              <input
-                type="tel"
-                id="number"
-                name="number"
-                value={formData.number}
-                onChange={handleChange}
-                required
-                pattern="[0-9]{10}"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="1234567890"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors font-medium"
-            >
-              સબમિટ કરો
-            </button>
-          </form>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 };
