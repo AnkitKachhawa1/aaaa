@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, AlertTriangle, HelpCircle } from 'lucide-react';
+import { HelpCircle } from 'lucide-react';
 
 const faqItems = [
   {
@@ -15,47 +15,6 @@ const faqItems = [
     answer: '18 વર્ષથી ઉપરની કોઈપણ વ્યક્તિ મ્યુચ્યુઅલ ફંડમાં રોકાણ કરી શકે છે. માતા-પિતાના નામે બાળકો માટે પણ રોકાણ કરી શકાય છે.',
   },
 ];
-
-const documentItems = [
-  'પાન કાર્ડ',
-  'આધાર કાર્ડ',
-  'બેંક પાસબુક / કેન્સલ ચેક',
-  'ફોટોગ્રાફ',
-  'ઈમેઈલ આઈડી અને મોબાઈલ નંબર',
-];
-
-const AccordionList = ({
-  icon,
-  title,
-  items,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  items: string[];
-}) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border rounded-lg">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full text-left p-4 font-medium text-gray-900 hover:bg-gray-50 flex justify-between items-center"
-      >
-        <span className="flex items-center gap-2">
-          {icon}
-          {title}
-        </span>
-        <span>{open ? '−' : '+'}</span>
-      </button>
-      {open && (
-        <ul className="p-4 pt-0 space-y-2 text-gray-600 list-disc list-inside">
-          {items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
 
 const FAQAccordion = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -126,52 +85,24 @@ const MutualFundPage: React.FC = () => {
 
   return (
     <div className="slide-in">
-      {/* Gujarati Q&A Content */}
+      {/* FAQ Section */}
       <section className="mb-12">
         <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
-            મ્યુચ્યુઅલ ફંડ માહિતી અને FAQ
+            સામાન્ય પ્રશ્નો
           </h2>
-
-          <div className="space-y-8">
-            <AccordionList
-              icon={<FileText size={24} className="text-primary" />}
-              title="જરૂરી દસ્તાવેજો"
-              items={documentItems}
-            />
-
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <AlertTriangle size={24} className="text-primary mr-2" />
-                રિસ્ક ફેક્ટર્સ
-              </h3>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> માર્કેટ રિસ્ક: બજારમાં ઉતાર-ચઢાવને કારણે રોકાણની કિંમતમાં ફેરફાર થઈ શકે છે</li>
-                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> લિક્વિડિટી રિસ્ક: કેટલાક ફંડ્સમાંથી પૈસા તરત કાઢવા મુશ્કેલ હોઈ શકે છે</li>
-                <li className="flex items-start"><span className="w-2 h-2 bg-primary rounded-full mr-2 mt-2"></span> ક્રેડિટ રિસ્ક: કંપનીઓની નાણાકીય સ્થિતિમાં ફેરફાર થવાથી રોકાણ પર અસર થઈ શકે છે</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <HelpCircle size={24} className="text-primary mr-2" />
-                સામાન્ય પ્રશ્નો
-              </h3>
-              <FAQAccordion />
-            </div>
+          <div>
+            <FAQAccordion />
           </div>
         </div>
       </section>
 
-      {/* Simple Contact Form */}
+      {/* Contact Form */}
       <section>
         <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
           <h2 className="text-xl font-bold text-gray-900 mb-4">
             સંપર્ક કરો
           </h2>
-          <p className="text-gray-600 mb-6">
-            મ્યુચ્યુઅલ ફંડ વિશે વધુ માહિતી માટે તમારી વિગતો આપો અને અમે તમારો સંપર્ક કરીશું.
-          </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
