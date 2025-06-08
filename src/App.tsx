@@ -19,7 +19,10 @@ function App() {
             <Route path="gst" element={<GSTPage />} />
             <Route path="updates" element={<UpdatesPage />} />
             <Route path="blogs/new" element={<NewBlog />} />
-            <Route path="blogs/:id" element={<BlogRoutes>
+            <Route path="blogs/:id" element={<BlogDetail />} />
+            <Route path="*" element={<Navigate to="/mutualfund" replace />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </HelmetProvider>
   );
