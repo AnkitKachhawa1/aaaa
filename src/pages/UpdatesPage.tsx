@@ -15,7 +15,6 @@ const UpdatesPage = () => {
           </li>
         ))}
       </ul>
-      <Link to="/blogs/new">Write a Blog</Link>
     </div>
   );
 };
