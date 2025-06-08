@@ -17,7 +17,7 @@ const Header: React.FC = () => {
         
         <div className="text-center">
           <Link to="/" className="inline-block">
-            <h1 className="text-2xl font-bold text-gray-800 mb-1">Financial Services</h1>
+            <h1 className="text-2xl font-bold text-gray-800 mb-1">ANKIT KACHHAWA</h1>
             <p className="text-sm text-gray-500">Professional Financial Solutions</p>
           </Link>
         </div>
