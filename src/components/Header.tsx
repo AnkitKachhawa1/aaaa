@@ -10,7 +10,7 @@ const Header: React.FC = () => {
       <div className="backdrop-brightness-95 backdrop-blur-sm h-full flex items-center">
         {/* Profile Image with some left margin (not extreme left) */}
         <div className="ml-4 mr-4 sm:ml-10 sm:mr-8">
-          <div className="w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] rounded-full overflow-hidden border-4 border-white shadow-2xl">
+          <div className="w-[110px] h-[110px] sm:w-[120px] sm:h-[120px] rounded-full overflow-hidden border-4 border-white shadow-2xl">
             <img
               src="/profile.jpg"
               alt="Ankit Kachhawa"
