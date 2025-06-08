@@ -6,7 +6,7 @@ const Navigation: React.FC = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-[275px] left-0 w-full bg-white border-b border-gray-200 z-40 shadow-sm">
+    <nav className="fixed top-[265px] left-0 w-full bg-white border-b border-gray-200 z-40 shadow-sm">
       <div className="container-custom">
         <div className="flex justify-center">
           <div className="flex space-x-8">
