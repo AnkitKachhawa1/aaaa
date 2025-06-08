@@ -5,24 +5,26 @@ const Header: React.FC = () => {
   return (
     <header
       className="fixed top-0 left-0 w-full z-50 bg-cover bg-center shadow-md"
-      style={{ backgroundImage: 'url("/header-bg.jpg")' }}
+      style={{ backgroundImage: 'url("/header-bg.jpg")', height: '180px' }}
     >
-      <div className="backdrop-brightness-95 backdrop-blur-sm h-16 flex items-center px-6">
-        {/* Profile Pic, Name, and Description - all in a row, left-aligned */}
-        <div className="flex items-center">
-          <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md mr-3">
+      <div className="backdrop-brightness-95 backdrop-blur-sm h-full flex items-center">
+        {/* Profile Image with some left margin (not extreme left) */}
+        <div className="ml-10 mr-8">
+          <div className="w-[120px] h-[120px] rounded-full overflow-hidden border-4 border-white shadow-2xl">
             <img
               src="/profile.jpg"
               alt="Ankit Kachhawa"
               className="w-full h-full object-cover"
             />
           </div>
-          <Link to="/" className="flex flex-col justify-center">
-            <span className="text-base font-bold text-white leading-tight">ANKIT KACHHAWA</span>
-            <span className="text-xs text-white/80 leading-tight">Professional Financial Solutions</span>
+        </div>
+        {/* Name and Tagline - center/right shifted */}
+        <div className="flex-1 flex flex-col items-start justify-center pl-8">
+          <Link to="/" className="block">
+            <h1 className="text-4xl font-bold text-white mb-2 text-center md:text-left">ANKIT KACHHAWA</h1>
+            <p className="text-lg text-white/80 text-center md:text-left">Professional Financial Solutions</p>
           </Link>
         </div>
-        {/* Future nav/buttons can go here */}
       </div>
     </header>
   );
