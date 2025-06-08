@@ -39,7 +39,7 @@ const Layout: React.FC = () => {
       <Navigation />
 
       {/* Add padding to push content below fixed header + nav */}
-      <div className="pt-[320px] flex-grow">
+      <div className="pt-[240px] flex-grow">
         <main className="container-custom py-8">
           <Outlet />
         </main>
