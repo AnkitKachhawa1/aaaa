@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { LineChart, FileText } from 'lucide-react';
+import { LineChart, FileText, Newspaper } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
@@ -32,6 +32,18 @@ const Navigation: React.FC = () => {
             >
               <FileText size={18} className="mr-2" />
               <span>GST Services</span>
+            </NavLink>
+
+            <NavLink
+              to="/updates"
+              className={({ isActive }) =>
+                `flex items-center py-4 px-2 text-sm font-medium transition-colors duration-300 ${
+                  isActive ? 'tab-active' : 'tab-inactive'
+                }`
+              }
+            >
+              <Newspaper size={18} className="mr-2" />
+              <span>Updates</span>
             </NavLink>
           </div>
         </div>
