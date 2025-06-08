@@ -31,4 +31,85 @@ const faqItems = [
   },
   {
     question: 'શું મ્યુચ્યુઅલ ફંડમાંથી પૈસા વહેલા કાઢી શકાય?',
-    answer: `હા, મ્યુચ્યુઅલ ફંડમાંથી પૈસા કાઢી શકાય છે, પણ કેટલાક નિયમો છે. Equity ફંડમાં સામાન્ય રીતે કોઈ લોક-ઇન પીરિયડ નથી, તેથી કયારે પણ પૈસા કાઢી શકાય છે. Debt ફંડમાં પણ મોટાભાગે તરત પૈસા મળી જાય છે. પણ ELSS (ટેક્સ સેવિંગ) ફંડમાં ૩ વર્ષનો લોક-ઇન પીરિયડ હોય છે. કેટલાક ફંડમાં early exit લોડ લાગે છે - જેમ કે ૧ વર્ષ પહેલા કાઢવા પર ૧% ચાર્જ. પૈસા કાઢવા માટે AM
+    answer: `હા, મ્યુચ્યુઅલ ફંડમાંથી પૈસા કાઢી શકાય છે, પણ કેટલાક નિયમો છે. Equity ફંડમાં સામાન્ય રીતે કોઈ લોક-ઇન પીરિયડ નથી, તેથી કયારે પણ પૈસા કાઢી શકાય છે. Debt ફંડમાં પણ મોટાભાગે તરત પૈસા મળી જાય છે. પણ ELSS (ટેક્સ સેવિંગ) ફંડમાં ૩ વર્ષનો લોક-ઇન પીરિયડ હોય છે. કેટલાક ફંડમાં early exit લોડ લાગે છે - જેમ કે ૧ વર્ષ પહેલા કાઢવા પર ૧% ચાર્જ. પૈસા કાઢવા માટે AMC ની વેબસાઇટ કે ઓફિસમાં અરજી કરવી પડે છે.`,
+  },
+];
+
+const FAQ = () => {
+  const [openItems, setOpenItems] = useState(new Set());
+
+  const toggleItem = (index) => {
+    const newOpenItems = new Set(openItems);
+    if (newOpenItems.has(index)) {
+      newOpenItems.delete(index);
+    } else {
+      newOpenItems.add(index);
+    }
+    setOpenItems(newOpenItems);
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto p-6 bg-white">
+      <div className="text-center mb-8">
+        <div className="flex items-center justify-center mb-4">
+          <HelpCircle className="w-8 h-8 text-blue-600 mr-2" />
+          <h1 className="text-3xl font-bold text-gray-800">મ્યુચ્યુઅલ ફંડ FAQ</h1>
+        </div>
+        <p className="text-gray-600">વારંવાર પૂછાતા પ્રશ્નો અને તેના જવાબો</p>
+      </div>
+
+      <div className="space-y-4">
+        {faqItems.map((item, index) => (
+          <div
+            key={index}
+            className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          >
+            <button
+              className="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition-colors"
+              onClick={() => toggleItem(index)}
+            >
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-medium text-gray-800 pr-4">
+                  {item.question}
+                </h3>
+                <div
+                  className={`transform transition-transform duration-200 ${
+                    openItems.has(index) ? 'rotate-180' : ''
+                  }`}
+                >
+                  <svg
+                    className="w-5 h-5 text-gray-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </button>
+            
+            {openItems.has(index) && (
+              <div className="px-6 py-4 bg-white border-t border-gray-100">
+                <div className="text-gray-700 leading-relaxed">
+                  {typeof item.answer === 'string' ? (
+                    <p className="whitespace-pre-line">{item.answer}</p>
+                  ) : (
+                    item.answer
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default FAQ;
