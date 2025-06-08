@@ -122,17 +122,17 @@ const MutualFundPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="px-4 py-6 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-full mr-3">
-              <HelpCircle className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-            </div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              મ્યુચ્યુઅલ ફંડ માહિતી
-            </h1>
-          </div>
-          <p className="text-base sm:text-lg text-gray-600 font-medium">વારંવાર પૂછાતા પ્રશ્નો અને સંપર્ક કરો</p>
+
+
+        {/* Introduction */}
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+          <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+            મ્યુચ્યુઅલ ફંડ એ આપના પૈસાને વૃદ્ધિ કરવાનો એક સુરક્ષિત અને વ્યાવસાયિક માર્ગ છે. આમાં તમારા પૈસા એક્સપર્ટ ફંડ મેનેજર્સ દ્વારા સંચાલિત થાય છે જેઓ વિવિધ કંપનીઓના શેર અને બોન્ડમાં રોકાણ કરે છે.
+            <br /><br />
+            મ્યુચ્યુઅલ ફંડનો મુખ્ય ફાયદો એ છે કે તમે ઓછા પૈસાથી પણ શરૂઆત કરી શકો છો અને SIP દ્વારા દર મહિને નિયમિત રોકાણ કરી શકો છો. આ તમારા ભવિષ્યના ધ્યેયો જેવા કે બાળકોનું શિક્ષણ, ઘર ખરીદવું કે રિટાયરમેન્ટ પ્લાનિંગ માટે ઉત્તમ છે.
+            <br /><br />
+            અહીં તમને મ્યુચ્યુઅલ ફંડ વિશેના સૌથી જરૂરી પ્રશ્નોના જવાબ મળશે અને કોઈ પણ મદદ માટે તમે અમારો સંપર્ક કરી શકશો.
+          </p>
         </div>
 
         {/* FAQ Section */}
