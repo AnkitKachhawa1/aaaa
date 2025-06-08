@@ -7,7 +7,7 @@ const Header: React.FC = () => {
       className="fixed top-0 left-0 w-full z-50 bg-cover bg-center shadow-md"
       style={{ backgroundImage: 'url("/header-bg.jpg")' }}
     >
-      <div className="backdrop-brightness-95 backdrop-blur-none py-6 flex flex-col items-center">
+      <div className="backdrop-brightness-95 backdrop-blur-sm py-6 flex flex-col items-center">
         {/* Profile Image with Shadow */}
         <div className="relative mb-4">
           <div className="w-[150px] h-[150px] rounded-full overflow-hidden border-4 border-white shadow-2xl">
