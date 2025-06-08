@@ -9,11 +9,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Navigate to="/mutualfund" replace />} />
+        <Route index element={<Navigate to="/mutualfund\" replace />} />
         <Route path="mutualfund" element={<MutualFundPage />} />
         <Route path="gst" element={<GSTPage />} />
         <Route path="updates" element={<UpdatesPage />} />
-        <Route path="*" element={<Navigate to="/mutualfund" replace />} />
+        <Route path="*" element={<Navigate to="/mutualfund\" replace />} />
       </Route>
     </Routes>
   );
