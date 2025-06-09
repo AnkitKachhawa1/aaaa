@@ -10,15 +10,17 @@ const Navigation: React.FC = () => {
   }, [location]);
 
   return (
-    <nav>
-      <div className="container-custom">
+    <nav className="bg-white shadow-sm border-b">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center">
           <div className="flex space-x-8">
             <NavLink
               to="/mutualfund"
               className={({ isActive }) =>
                 `flex items-center py-4 px-2 text-sm font-medium transition-colors duration-300 ${
-                  isActive ? 'tab-active' : 'tab-inactive'
+                  isActive 
+                    ? 'text-blue-600 border-b-2 border-blue-600' 
+                    : 'text-gray-600 hover:text-blue-600'
                 }`
               }
             >
@@ -29,7 +31,9 @@ const Navigation: React.FC = () => {
               to="/gst"
               className={({ isActive }) =>
                 `flex items-center py-4 px-2 text-sm font-medium transition-colors duration-300 ${
-                  isActive ? 'tab-active' : 'tab-inactive'
+                  isActive 
+                    ? 'text-blue-600 border-b-2 border-blue-600' 
+                    : 'text-gray-600 hover:text-blue-600'
                 }`
               }
             >
@@ -40,7 +44,9 @@ const Navigation: React.FC = () => {
               to="/updates"
               className={({ isActive }) =>
                 `flex items-center py-4 px-2 text-sm font-medium transition-colors duration-300 ${
-                  isActive ? 'tab-active' : 'tab-inactive'
+                  isActive 
+                    ? 'text-blue-600 border-b-2 border-blue-600' 
+                    : 'text-gray-600 hover:text-blue-600'
                 }`
               }
             >
