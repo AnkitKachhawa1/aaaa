@@ -4,21 +4,27 @@ import { LineChart, FileText, Newspaper } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
+  
+  useEffect(() => {
+    // Add your effect logic here if needed
+  }, [location]);
 
-  useEffect="container-custom">
+  return (
+    <nav>
+      <div className="container-custom">
         <div className="flex justify-center">
           <div className="flex space-x-8">
             <NavLink
               to="/mutualfund"
               className={({ isActive }) =>
-                `flex items-center py-4 px-2 text-sm font-medium transition-colors durationactive'
+                `flex items-center py-4 px-2 text-sm font-medium transition-colors duration-300 ${
+                  isActive ? 'tab-active' : 'tab-inactive'
                 }`
               }
             >
               <LineChart size={18} className="mr-2" />
               <span>Mutual Fund</span>
             </NavLink>
-
             <NavLink
               to="/gst"
               className={({ isActive }) =>
@@ -30,9 +36,10 @@ const Navigation: React.FC = () => {
               <FileText size={18} className="mr-2" />
               <span>GST Services</span>
             </NavLink>
-
             <NavLink
-              to="/updates py-4 px-2 text-sm font-medium transition-colors duration-300 ${
+              to="/updates"
+              className={({ isActive }) =>
+                `flex items-center py-4 px-2 text-sm font-medium transition-colors duration-300 ${
                   isActive ? 'tab-active' : 'tab-inactive'
                 }`
               }
