@@ -2,8 +2,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { blogs } from "../data/blogs";
 
+const tagOptions = ["all", "mutual fund", "gst", "others"];
+const sortOptions = [
+  { label: "Newest to Oldest", value: "desc" },
+  { label: "Oldest to Newest", value: "asc" }
+];
+
 const UpdatesPage = () => {
-  const [blogList] = useState(blogs);
+  const [selectedTag, setSelectedTag] = useState("all");
+  const [sortOrder, setSortOrder] = useState("desc");
+
+  const filteredBlogs = blogs
+    .filter(blog => selectedTag === "all" ? true : blog.tag === selectedTag)
+    .sort((a, b) => {
+      const da = new Date(a.date), db = new Date(b.date);
+      return sortOrder === "desc" ? db - da : da - db;
+    });
 
   return (
     <div style={{
@@ -32,8 +46,20 @@ const UpdatesPage = () => {
             WebkitTextFillColor: "transparent"
           }}>Blog Updates</span>
         </h2>
+        <div style={{ marginBottom: 24, display: "flex", gap: 16 }}>
+          <select value={selectedTag} onChange={e => setSelectedTag(e.target.value)}>
+            {tagOptions.map(option => (
+              <option key={option} value={option}>{option === "all" ? "All Tags" : option}</option>
+            ))}
+          </select>
+          <select value={sortOrder} onChange={e => setSortOrder(e.target.value)}>
+            {sortOptions.map(opt => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+        </div>
         <ul style={{listStyle: "none", padding: 0, margin: 0}}>
-          {blogList.length === 0 && (
+          {filteredBlogs.length === 0 && (
             <li style={{
               color: "#64748b",
               fontSize: 18,
@@ -44,7 +70,7 @@ const UpdatesPage = () => {
               No blogs have been posted yet.
             </li>
           )}
-          {blogList.map((blog) => (
+          {filteredBlogs.map((blog) => (
             <li key={blog.id} style={{
               marginBottom: 22,
               borderBottom: "1px solid #e5e7eb",
@@ -64,6 +90,10 @@ const UpdatesPage = () => {
               >
                 {blog.title}
               </Link>
+              <div style={{ fontSize: 14, color: "#64748b", marginTop: 2 }}>
+                {blog.tag && <span>Tag: {blog.tag}</span>} &nbsp;|&nbsp; 
+                {blog.date && <span>{new Date(blog.date).toLocaleDateString()}</span>}
+              </div>
             </li>
           ))}
         </ul>
@@ -71,5 +101,4 @@ const UpdatesPage = () => {
     </div>
   );
 };
-
 export default UpdatesPage;
