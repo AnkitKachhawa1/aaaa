@@ -18,16 +18,16 @@ const Footer: React.FC = () => {
               Our expert team ensures you get the best financial guidance and compliance support.
             </p>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" className="text-gray-400 hover:text-primary transition-colors" aria-label="Facebook">
+              <a href="https://www.facebook.com/ankit.kachhawa.7" className="text-gray-400 hover:text-primary transition-colors" aria-label="Facebook">
                 <Facebook size={20} />
               </a>
-              <a href="https://twitter.com" className="text-gray-400 hover:text-primary transition-colors" aria-label="Twitter">
+              <a href="https://twitter.com/iAnkitKachhawa?t=w5B3bg89g852h7IBq7N7-g&s=09" className="text-gray-400 hover:text-primary transition-colors" aria-label="Twitter">
                 <Twitter size={20} />
               </a>
-              <a href="https://instagram.com" className="text-gray-400 hover:text-primary transition-colors" aria-label="Instagram">
+              <a href="https://instagram.com/Ankitkachhawa" className="text-gray-400 hover:text-primary transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="https://linkedin.com" className="text-gray-400 hover:text-primary transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/ankit-kachhawa-9964421a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="text-gray-400 hover:text-primary transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -38,15 +38,15 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Mail size={18} className="text-primary mr-3 mt-0.5 flex-shrink-0" />
-                <span className="text-gray-400">contact@financialservices.com</span>
+                <span className="text-gray-400">ankitkachchhawa@gmail.com</span>
               </li>
               <li className="flex items-start">
                 <Phone size={18} className="text-primary mr-3 mt-0.5 flex-shrink-0" />
-                <span className="text-gray-400">+91 98765 43210</span>
+                <span className="text-gray-400">+91 95100 74375</span>
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="text-primary mr-3 mt-0.5 flex-shrink-0" />
-                <span className="text-gray-400">123 Financial District, Mumbai, Maharashtra, India</span>
+                <span className="text-gray-400">1st Floor,Pitrukrupa Shopping Centre,Deesa,Gujarat-385535</span>
               </li>
               <li className="mt-4">
                 <button 
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Financial Services. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} ANKIT KACHHAWA. All rights reserved.</p>
         </div>
       </div>
     </footer>
