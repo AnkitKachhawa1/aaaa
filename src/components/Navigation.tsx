@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { LineChart, FileText, Newspaper } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <nav className="fixed top-[182px] left-0 w-full bg-white border-b border-gray-200 z-40 shadow-sm">
@@ -37,11 +41,7 @@ const Navigation: React.FC = () => {
             <NavLink
               to="/updates"
               className={({ isActive }) =>
-                `flex items-center py-4 px-2 text-sm font-medium transition-colors duration-300 ${
-                  isActive ? 'tab-active' : 'tab-inactive'
-                }`
-              }
-            >
+                `flex items-center py-4 px-2 text-sm font-medium transition >
               <Newspaper size={18} className="mr-2" />
               <span>Updates</span>
             </NavLink>
