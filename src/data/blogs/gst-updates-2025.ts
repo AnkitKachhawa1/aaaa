@@ -1,12 +1,12 @@
 const gstUpdates2025 = {
   id: "gst-updates-2025",
   title: "Latest GST Updates in 2025",
-  tag: "gst", // NEW FIELD
-  date: "2025-06-01", // NEW FIELD (YYYY-MM-DD)
-  image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+  tag: "gst",
+  date: "2025-06-01",
+  image: "https://images.pexels.com/photos/6693661/pexels-photo-6693661.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop",
   content: `
     <p><strong>GST (Goods and Services Tax)</strong> continues to evolve in 2025 with new rules, compliance measures, and opportunities for businesses. Staying updated is crucial to ensure your business stays compliant and leverages available benefits.</p>
-    <img src="https://images.unsplash.com/photo-1556741533-f6acd6477fa8?auto=format&fit=crop&w=800&q=80" alt="GST Updates" style="max-width: 100%; border-radius: 12px; margin: 24px 0;">
+    <img src="https://images.pexels.com/photos/1556741/pexels-photo-1556741.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="GST Updates" style="max-width: 100%; border-radius: 12px; margin: 24px 0;">
     <h3>Key Updates This Year</h3>
     <ul>
       <li><strong>E-invoicing Expansion:</strong> The turnover threshold for mandatory e-invoicing has been reduced, bringing more businesses under its scope.</li>

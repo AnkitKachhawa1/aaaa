@@ -1,9 +1,9 @@
 const gstDocumentList = {
-  id: "gst-document-list", // changed from link to id
+  id: "gst-document-list",
   title: "GST નોંધણી માટે જરૂરી દસ્તાવેજો",
-  date: "9 JUNE 2025",
+  date: "2025-06-09",
   tag: "gst",
-  image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  image: "https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop",
   content: `
     <div class="gst-document-content">
       <h2>GST નોંધણી માટે જરૂરી દસ્તાવેજોની યાદી</h2>
