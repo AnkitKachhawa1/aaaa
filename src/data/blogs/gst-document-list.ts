@@ -1,5 +1,5 @@
 const gstDocumentList = {
-  link: "gst-document-list",
+  id: "gst-document-list", // changed from link to id
   title: "GST નોંધણી માટે જરૂરી દસ્તાવેજો",
   date: "9 JUNE 2025",
   tag: "GST",
