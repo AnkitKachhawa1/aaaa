@@ -20,85 +20,93 @@ const UpdatesPage = () => {
     });
 
   return (
-    <div style={{
-      background: "linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%)",
-      minHeight: "100vh",
-      padding: "40px 0"
-    }}>
-      <div style={{
-        maxWidth: 600,
-        background: "#fff",
-        borderRadius: 16,
-        margin: "0 auto",
-        padding: "36px 32px 32px 32px",
-        boxShadow: "0 4px 24px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08)"
-      }}>
-        <h2 style={{
-          fontWeight: 900,
-          fontSize: 36,
-          letterSpacing: "-1px",
-          marginBottom: 28,
-          color: "#1e293b"
-        }}>
-          <span style={{
-            background: "linear-gradient(90deg,#6366f1,#0ea5e9)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent"
-          }}>Blog Updates</span>
-        </h2>
-        <div style={{ marginBottom: 24, display: "flex", gap: 16 }}>
-          <select value={selectedTag} onChange={e => setSelectedTag(e.target.value)}>
+    <div
+      className="min-h-screen bg-gradient-to-br from-slate-100 to-blue-50 py-8 px-2 sm:px-4"
+    >
+      <div className="max-w-3xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col items-center mb-10 text-center">
+          <h2 className="font-extrabold text-3xl sm:text-4xl mb-2 text-slate-800 tracking-tight">
+            <span className="bg-gradient-to-r from-indigo-500 to-sky-400 bg-clip-text text-transparent">Blog Updates</span>
+          </h2>
+          <p className="text-slate-500 max-w-xl text-base sm:text-lg">
+            Latest insights, news, and articles about Mutual Funds, GST, and more.
+          </p>
+        </div>
+        {/* Filters */}
+        <div className="flex flex-col sm:flex-row justify-between items-stretch gap-3 mb-6">
+          <select
+            className="border border-slate-300 rounded-md px-3 py-2 text-slate-700 focus:ring-2 focus:ring-indigo-300 transition w-full sm:w-auto"
+            value={selectedTag}
+            onChange={e => setSelectedTag(e.target.value)}
+          >
             {tagOptions.map(option => (
-              <option key={option} value={option}>{option === "all" ? "All Tags" : option}</option>
+              <option key={option} value={option}>{option === "all" ? "All Tags" : option.charAt(0).toUpperCase() + option.slice(1)}</option>
             ))}
           </select>
-          <select value={sortOrder} onChange={e => setSortOrder(e.target.value)}>
+          <select
+            className="border border-slate-300 rounded-md px-3 py-2 text-slate-700 focus:ring-2 focus:ring-indigo-300 transition w-full sm:w-auto"
+            value={sortOrder}
+            onChange={e => setSortOrder(e.target.value)}
+          >
             {sortOptions.map(opt => (
               <option key={opt.value} value={opt.value}>{opt.label}</option>
             ))}
           </select>
         </div>
-        <ul style={{listStyle: "none", padding: 0, margin: 0}}>
+        {/* Blog cards */}
+        <div className="grid gap-6">
           {filteredBlogs.length === 0 && (
-            <li style={{
-              color: "#64748b",
-              fontSize: 18,
-              fontWeight: 500,
-              textAlign: "center",
-              margin: "32px 0"
-            }}>
+            <div className="py-12 text-center text-gray-400 text-lg font-medium">
               No blogs have been posted yet.
-            </li>
+            </div>
           )}
-          {filteredBlogs.map((blog) => (
-            <li key={blog.id} style={{
-              marginBottom: 22,
-              borderBottom: "1px solid #e5e7eb",
-              paddingBottom: 14
-            }}>
-              <Link to={`/blogs/${blog.id}`}
-                style={{
-                  fontSize: 22,
-                  fontWeight: 700,
-                  color: "#0ea5e9",
-                  textDecoration: "none",
-                  transition: "color 0.18s",
-                  display: "block"
-                }}
-                onMouseOver={e => (e.currentTarget.style.color = "#6366f1")}
-                onMouseOut={e => (e.currentTarget.style.color = "#0ea5e9")}
-              >
-                {blog.title}
-              </Link>
-              <div style={{ fontSize: 14, color: "#64748b", marginTop: 2 }}>
-                {blog.tag && <span>Tag: {blog.tag}</span>} &nbsp;|&nbsp; 
-                {blog.date && <span>{new Date(blog.date).toLocaleDateString()}</span>}
+          {filteredBlogs.map(blog => (
+            <div
+              key={blog.id}
+              className="bg-white rounded-xl shadow-md p-5 flex flex-col sm:flex-row gap-5 items-start hover:shadow-lg transition"
+            >
+              {blog.image && (
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="w-full sm:w-32 h-32 object-cover rounded-lg mb-3 sm:mb-0"
+                  style={{ maxWidth: 128, minWidth: 96, flexShrink: 0 }}
+                />
+              )}
+              <div className="flex-1 w-full">
+                <Link
+                  to={`/blogs/${blog.id}`}
+                  className="block font-bold text-xl sm:text-2xl text-indigo-600 hover:text-sky-500 transition mb-1"
+                >
+                  {blog.title}
+                </Link>
+                <div className="mb-2 flex flex-wrap items-center gap-3 text-sm text-slate-400">
+                  <span className="bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded font-semibold">
+                    {blog.tag}
+                  </span>
+                  <span>
+                    {blog.date && new Date(blog.date).toLocaleDateString()}
+                  </span>
+                </div>
+                <div
+                  className="text-slate-700 text-base line-clamp-2"
+                  // Optionally show short preview of content
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      typeof blog.content === "string"
+                        ? blog.content.replace(/<[^>]+>/g, "").slice(0, 120) +
+                          (blog.content.length > 120 ? "..." : "")
+                        : "",
+                  }}
+                />
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
 };
+
 export default UpdatesPage;
