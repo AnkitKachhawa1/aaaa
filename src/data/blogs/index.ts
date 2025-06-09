@@ -16,7 +16,7 @@ export const blogs = [
   },
   {
     ...gstDocumentList,
-    tag: "GST",
+    tag: "gst",
     date: "9 JUNE 2025",
   },
   // Add more blogs as needed
