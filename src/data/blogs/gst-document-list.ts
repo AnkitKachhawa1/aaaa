@@ -6,12 +6,6 @@ const gstDocumentList = {
   image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
   content: `
     <div class="gst-document-content">
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60" 
-             alt="GST Tax Documents and Calculator" 
-             loading="lazy"
-             style="width: 100%; max-width: 600px; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
-      </div>
       <h2>GST નોંધણી માટે જરૂરી દસ્તાવેજોની યાદી</h2>
       
       <p>GST (જીએસટી) નોંધણી કરાવવા માટે નીચેના દસ્તાવેજો જરૂરી છે:</p>
