@@ -6,7 +6,8 @@ const Navigation: React.FC = () => {
   const location = useLocation();
   
   useEffect(() => {
-    // Add your effect logic here if needed
+    // Scroll to top when location/route changes
+    window.scrollTo(0, 0);
   }, [location]);
 
   return (
