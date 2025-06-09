@@ -1,12 +1,7 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Download } from 'lucide-react';
-import { generateVCard } from '../utils/vcard';
 
 const Footer: React.FC = () => {
-  const handleDownloadContact = () => {
-    generateVCard();
-  };
-
   return (
     <footer className="bg-gray-900 text-white py-8">
       <div className="container-custom">
@@ -49,13 +44,14 @@ const Footer: React.FC = () => {
                 <span className="text-gray-400">1st Floor,Pitrukrupa Shopping Centre,Deesa,Gujarat-385535</span>
               </li>
               <li className="mt-4">
-                <button 
-                  onClick={handleDownloadContact}
+                <a
+                  href="/me.vcf"
+                  download
                   className="flex items-center text-sm bg-primary/20 text-primary hover:bg-primary/30 rounded-full py-2 px-4 transition-colors"
                 >
                   <Download size={16} className="mr-2" />
                   <span>Download Contact Card</span>
-                </button>
+                </a>
               </li>
             </ul>
           </div>
