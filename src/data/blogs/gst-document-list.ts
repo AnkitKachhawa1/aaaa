@@ -3,7 +3,7 @@ const gstDocumentList = {
   title: "Complete GST Document Checklist for Registration",
   tag: "GST",
   date: "09/06/2025",
-  image: "https://images.pexels.com/photos/6693661/pexels-photo-6693661.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop",
+  image: "https://images.pexels.com/photos/5717704/pexels-photo-5717704.jpeg",
   content: `
     <p><strong>GST Registration</strong> માટે જરૂરી દસ્તાવેજોની સંપૂર્ણ યાદી અહીં આપવામાં આવી છે. આ બધા દસ્તાવેજો તૈયાર રાખીને તમે ઝડપથી GST રજિસ્ટ્રેશન કરાવી શકશો.</p>
     
@@ -54,7 +54,7 @@ const gstDocumentList = {
       <p>• બધા દસ્તાવેજો સ્કેન કરીને PDF ફોર્મેટમાં તૈયાર રાખો</p>
       <p>• દસ્તાવેજોમાં કોઈ પણ ભૂલ ન હોય તેની ખાતરી કરો</p>
       <p>• વ્યવસાયના પ્રકાર અનુસાર વધારાના દસ્તાવેજોની જરૂર પડી શકે છે</p>
-      <p style="margin-bottom: 0;"><strong>GST રજિસ્ટ્રેશન પ્રોસેસ સામાન્ય રીતે 3-7 દિવસમાં પૂર્ણ થાય છે.</strong></p>
+      <p style="margin-bottom: 0;"><strong>GST રજિસ્ટ્રેશન પ્રોસેસ સામાન્ય રીતે 10-15 દિવસમાં પૂર્ણ થાય છે.</strong></p>
     </div>
   `
 };
