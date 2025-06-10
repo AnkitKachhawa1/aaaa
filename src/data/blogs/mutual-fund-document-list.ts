@@ -5,7 +5,7 @@ const mutualFundDocumentList = {
   date: "10/06/2025",
   image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg",
   content: `
-    <p><strong>મ્યુચ્યુઅલ ફંડ</strong>માં રોકાણ કરવા માંગો છો? અહીં તમામ જરૂરી ડોક્યુમેન્ટ્સની સંપૂર્ણ યાદી આપવામાં આવી છે. આ બધા ડોક્યુમેન્ટ્સ તૈયાર રાખીને તમે સરળતાથી મ્યુચ્યુઅલ ફંડ એકાઉન્ટ ખોલાવી શકશો.</p>
+    <p><strong>મ્યુચ્યુઅલ ફંડ માં રોકાણ કરવા માંગો છો?</strong> અહીં તમામ જરૂરી ડોક્યુમેન્ટ્સની સંપૂર્ણ યાદી આપવામાં આવી છે. આ બધા ડોક્યુમેન્ટ્સ તૈયાર રાખીને તમે સરળતાથી મ્યુચ્યુઅલ ફંડ એકાઉન્ટ ખોલાવી શકશો.</p>
     
     <h3>મુખ્ય ઓળખ ડોક્યુમેન્ટ્સ</h3>
     <ul>
@@ -26,7 +26,6 @@ const mutualFundDocumentList = {
     <ul>
       <li><strong>ઈમેઈલ ID</strong> - સક્રિય અને વેલિડ ઈમેઈલ</li>
       <li><strong>મોબાઈલ નંબર</strong> - આધાર કાર્ડ સાથે લિંક થયેલો</li>
-      <li><strong>સરનામાંનો પુરાવો</strong> - યુટિલિટી બીલ અથવા રેન્ટ એગ્રીમેન્ટ</li>
     </ul>
     
     <h3>નોમિની (વારસદાર) ની વિગતો</h3>
@@ -34,7 +33,6 @@ const mutualFundDocumentList = {
       <li><strong>નોમિનીનું નામ</strong> - પૂરું નામ અને સંબંધ</li>
       <li><strong>નોમિનીનું પાન કાર્ડ</strong> - વારસદારનું પાન કાર્ડ આવશ્યક</li>
       <li><strong>નોમિનીની જન્મ તારીખ</strong> - વય પ્રમાણે વધારાની વિગતો</li>
-      <li><strong>નોમિનીનું સરનામું</strong> - સંપૂર્ણ સરનામું</li>
     </ul>
     
     <div style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 20px; border-radius: 12px; margin: 24px 0; color: white;">
