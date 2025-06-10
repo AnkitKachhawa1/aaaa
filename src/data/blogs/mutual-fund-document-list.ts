@@ -1,6 +1,6 @@
 const mutualFundDocumentList = {
   id: "mutual-fund-document-list",
-  title: "મ્યુચ્યુઅલ ફંડ એકાઉન્ટ ખોલવા માટે જરૂરી ડોક્યુમેન્ટ્સ",
+  title: "Complete Mutual Fund Document Checklist for Registration",
   tag: "Mutual Fund",
   date: "10/06/2025",
   image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg",
