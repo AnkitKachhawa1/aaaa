@@ -1,8 +1,8 @@
 const financialPlanning = {
   id: "financial-planning",
   title: "Effective Financial Planning for 2025",
-  tag: "mutual fund",
-  date: "2025-05-10",
+  tag: "Mutual Fund",
+  date: "10/05/2025",
   image: "https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop",
   content: `
     <p>

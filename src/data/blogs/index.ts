@@ -6,18 +6,18 @@ import gstDocumentList from './gst-document-list';
 export const blogs = [
   {
     ...financialPlanning,
-    tag: "mutual fund",
-    date: "2025-05-10",
+    tag: "Mutual Fund",
+    date: "10/05/2025",
   },
   {
     ...gstUpdates2025,
-    tag: "gst",
-    date: "2025-06-01",
+    tag: "GST",
+    date: "01/06/2025",
   },
   {
     ...gstDocumentList,
-    tag: "gst",
-    date: "2025-06-09",
+    tag: "GST",
+    date: "09/06/2025",
   },
   // Add more blogs as needed
 ];

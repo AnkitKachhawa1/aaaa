@@ -1,8 +1,8 @@
 const gstUpdates2025 = {
   id: "gst-updates-2025",
   title: "Latest GST Updates in 2025",
-  tag: "gst",
-  date: "2025-06-01",
+  tag: "GST",
+  date: "01/06/2025",
   image: "https://images.pexels.com/photos/6693661/pexels-photo-6693661.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop",
   content: `
     <p><strong>GST (Goods and Services Tax)</strong> continues to evolve in 2025 with new rules, compliance measures, and opportunities for businesses. Staying updated is crucial to ensure your business stays compliant and leverages available benefits.</p>

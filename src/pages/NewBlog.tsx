@@ -2,11 +2,32 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { blogs } from "../data/blogs";
 
+// Helper function to format current date as dd/mm/yyyy
+const getCurrentDateFormatted = () => {
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const year = today.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
+// Helper function to convert yyyy-mm-dd to dd/mm/yyyy
+const convertDateFormat = (dateStr: string) => {
+  const [year, month, day] = dateStr.split('-');
+  return `${day}/${month}/${year}`;
+};
+
+// Helper function to convert dd/mm/yyyy to yyyy-mm-dd for input field
+const convertToInputFormat = (dateStr: string) => {
+  const [day, month, year] = dateStr.split('/');
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+};
+
 const NewBlog = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [tag, setTag] = useState("mutual fund");
-  const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
+  const [tag, setTag] = useState("Mutual Fund");
+  const [date, setDate] = useState(getCurrentDateFormatted());
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -19,6 +40,12 @@ const NewBlog = () => {
       date,
     });
     navigate("/updates");
+  };
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputDate = e.target.value; // yyyy-mm-dd format
+    const formattedDate = convertDateFormat(inputDate); // convert to dd/mm/yyyy
+    setDate(formattedDate);
   };
 
   return (
@@ -44,9 +71,9 @@ const NewBlog = () => {
         <label>
           Tag:&nbsp;
           <select value={tag} onChange={e => setTag(e.target.value)}>
-            <option value="mutual fund">Mutual Fund</option>
-            <option value="gst">GST</option>
-            <option value="others">Others</option>
+            <option value="Mutual Fund">Mutual Fund</option>
+            <option value="GST">GST</option>
+            <option value="Others">Others</option>
           </select>
         </label>
       </div>
@@ -55,8 +82,8 @@ const NewBlog = () => {
           Date:&nbsp;
           <input
             type="date"
-            value={date}
-            onChange={e => setDate(e.target.value)}
+            value={convertToInputFormat(date)}
+            onChange={handleDateChange}
             required
           />
         </label>

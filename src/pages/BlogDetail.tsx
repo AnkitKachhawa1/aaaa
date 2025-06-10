@@ -3,6 +3,11 @@ import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { blogs } from "../data/blogs";
 
+// Helper function to format date as dd/mm/yyyy
+const formatDate = (dateStr: string) => {
+  return dateStr; // Already in dd/mm/yyyy format
+};
+
 const BlogDetail = () => {
   const { id } = useParams();
   const blog = blogs.find((b) => b.id === id);
@@ -72,7 +77,7 @@ const BlogDetail = () => {
             <span style={{ backgroundColor: "#dbeafe", color: "#1d4ed8", padding: "4px 8px", borderRadius: 6, fontWeight: 600 }}>
               {blog.tag}
             </span>
-            <span>Published: {new Date(blog.date).toLocaleDateString()}</span>
+            <span>Published: {formatDate(blog.date)}</span>
             <span>By: Ankit Kachhawa</span>
           </div>
         </div>

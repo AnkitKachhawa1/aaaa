@@ -2,11 +2,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { blogs } from "../data/blogs";
 
-const tagOptions = ["all", "mutual fund", "gst", "others"];
+const tagOptions = ["all", "Mutual Fund", "GST", "Others"];
 const sortOptions = [
   { label: "Newest to Oldest", value: "desc" },
   { label: "Oldest to Newest", value: "asc" }
 ];
+
+// Helper function to parse dd/mm/yyyy format
+const parseDate = (dateStr: string) => {
+  const [day, month, year] = dateStr.split('/').map(Number);
+  return new Date(year, month - 1, day);
+};
+
+// Helper function to format date as dd/mm/yyyy
+const formatDate = (dateStr: string) => {
+  return dateStr; // Already in dd/mm/yyyy format
+};
 
 const UpdatesPage = () => {
   const [selectedTag, setSelectedTag] = useState("all");
@@ -15,8 +26,8 @@ const UpdatesPage = () => {
   const filteredBlogs = blogs
     .filter(blog => selectedTag === "all" ? true : blog.tag === selectedTag)
     .sort((a, b) => {
-      const da = new Date(a.date), db = new Date(b.date);
-      return sortOrder === "desc" ? db - da : da - db;
+      const da = parseDate(a.date), db = parseDate(b.date);
+      return sortOrder === "desc" ? db.getTime() - da.getTime() : da.getTime() - db.getTime();
     });
 
   return (
@@ -41,7 +52,7 @@ const UpdatesPage = () => {
             onChange={e => setSelectedTag(e.target.value)}
           >
             {tagOptions.map(option => (
-              <option key={option} value={option}>{option === "all" ? "All Tags" : option.charAt(0).toUpperCase() + option.slice(1)}</option>
+              <option key={option} value={option}>{option === "all" ? "All Tags" : option}</option>
             ))}
           </select>
           <select
@@ -86,7 +97,7 @@ const UpdatesPage = () => {
                     {blog.tag}
                   </span>
                   <span>
-                    {blog.date && new Date(blog.date).toLocaleDateString()}
+                    {formatDate(blog.date)}
                   </span>
                 </div>
                 <div
