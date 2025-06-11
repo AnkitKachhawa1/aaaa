@@ -166,7 +166,7 @@ const MutualFundPage = () => {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm">
             <div className="bg-green-50 p-3 rounded-lg text-center">
-              <strong>Deesa</strong><br />દીસા
+              <strong>Deesa</strong><br />ડીસા
             </div>
             <div className="bg-green-50 p-3 rounded-lg text-center">
               <strong>Palanpur</strong><br />પાલનપુર
@@ -187,7 +187,7 @@ const MutualFundPage = () => {
               <strong>Kankrej</strong><br />કાંકરેજ
             </div>
             <div className="bg-green-50 p-3 rounded-lg text-center">
-              <strong>Lakhani</strong><br />લાખાણી
+              <strong>Lakhani</strong><br />લાખણી
             </div>
           </div>
         </div>
