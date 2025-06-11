@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, MapPin, Phone, TrendingUp } from 'lucide-react';
 
 const faqItems = [
   {
@@ -122,17 +122,99 @@ const MutualFundPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="px-4 py-6 sm:px-6 lg:px-8">
         
-
-
-        {/* Introduction */}
+        {/* Hero Section with Local SEO */}
         <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+          <div className="text-center mb-6">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+              Mutual Fund Services in Deesa, Banaskantha - Gujarat
+            </h1>
+            <p className="text-lg text-gray-600 mb-4">
+              Professional SIP & Investment Advisory Services by Ankit Kachhawa
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-4 text-sm text-gray-500">
+              <div className="flex items-center gap-1">
+                <MapPin size={16} className="text-blue-600" />
+                <span>Serving Deesa & Banaskantha District</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Phone size={16} className="text-green-600" />
+                <span>+91 95100 74375</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <TrendingUp size={16} className="text-purple-600" />
+                <span>Expert Investment Advisor</span>
+              </div>
+            </div>
+          </div>
+          
           <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-            મ્યુચ્યુઅલ ફંડ એ આપના પૈસાને વૃદ્ધિ કરવાનો એક સુરક્ષિત અને વ્યાવસાયિક માર્ગ છે. આમાં તમારા પૈસા એક્સપર્ટ ફંડ મેનેજર્સ દ્વારા સંચાલિત થાય છે જેઓ વિવિધ કંપનીઓના શેર અને બોન્ડમાં રોકાણ કરે છે.
+            <strong>અંકિત કચ્છાવા</strong> દ્વારા દીસા, બનાસકાંઠા, ગુજરાતમાં વ્યાવસાયિક મ્યુચ્યુઅલ ફંડ સેવાઓ. 
+            મ્યુચ્યુઅલ ફંડ એ આપના પૈસાને વૃદ્ધિ કરવાનો એક સુરક્ષિત અને વ્યાવસાયિક માર્ગ છે. 
+            આમાં તમારા પૈસા એક્સપર્ટ ફંડ મેનેજર્સ દ્વારા સંચાલિત થાય છે જેઓ વિવિધ કંપનીઓના શેર અને બોન્ડમાં રોકાણ કરે છે.
             <br /><br />
-            મ્યુચ્યુઅલ ફંડનો મુખ્ય ફાયદો એ છે કે તમે ઓછા પૈસાથી પણ શરૂઆત કરી શકો છો અને SIP દ્વારા દર મહિને નિયમિત રોકાણ કરી શકો છો. આ તમારા ભવિષ્યના ધ્યેયો જેવા કે બાળકોનું શિક્ષણ, ઘર ખરીદવું કે રિટાયરમેન્ટ પ્લાનિંગ માટે ઉત્તમ છે.
+            <strong>દીસા અને બનાસકાંઠા જિલ્લામાં મ્યુચ્યુઅલ ફંડ સેવાઓ:</strong> SIP પ્લાનિંગ, પોર્ટફોલિયો મેનેજમેન્ટ, રિસ્ક એસેસમેન્ટ, અને ઇન્વેસ્ટમેન્ટ એડવાઇઝરી. 
+            મ્યુચ્યુઅલ ફંડનો મુખ્ય ફાયદો એ છે કે તમે ઓછા પૈસાથી પણ શરૂઆત કરી શકો છો અને SIP દ્વારા દર મહિને નિયમિત રોકાણ કરી શકો છો.
             <br /><br />
-            અહીં તમને મ્યુચ્યુઅલ ફંડ વિશેના સૌથી જરૂરી પ્રશ્નોના જવાબ મળશે અને કોઈ પણ મદદ માટે તમે અમારો સંપર્ક કરી શકશો.
+            <strong>લાંબા ગાળાના ધ્યેયો માટે આદર્શ:</strong> બાળકોનું શિક્ષણ, ઘર ખરીદવું, રિટાયરમેન્ટ પ્લાનિંગ, અને વેલ્થ ક્રિએશન માટે ઉત્તમ.
           </p>
+        </div>
+
+        {/* Local Service Areas */}
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
+            Mutual Fund Service Areas - સેવા વિસ્તારો
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm">
+            <div className="bg-green-50 p-3 rounded-lg text-center">
+              <strong>Deesa</strong><br />દીસા
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg text-center">
+              <strong>Palanpur</strong><br />પાલનપુર
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg text-center">
+              <strong>Dhanera</strong><br />ધાનેરા
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg text-center">
+              <strong>Tharad</strong><br />થરાદ
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg text-center">
+              <strong>Vav</strong><br />વાવ
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg text-center">
+              <strong>Danta</strong><br />દાંતા
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg text-center">
+              <strong>Kankrej</strong><br />કાંકરેજ
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg text-center">
+              <strong>Lakhani</strong><br />લાખાણી
+            </div>
+          </div>
+        </div>
+
+        {/* Services Offered */}
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
+            Our Mutual Fund Services - અમારી સેવાઓ
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <h3 className="font-semibold text-blue-800 mb-2">SIP Planning</h3>
+              <p className="text-sm text-gray-700">Systematic Investment Plan setup and management</p>
+            </div>
+            <div className="bg-green-50 p-4 rounded-lg">
+              <h3 className="font-semibold text-green-800 mb-2">Portfolio Review</h3>
+              <p className="text-sm text-gray-700">Regular portfolio analysis and rebalancing</p>
+            </div>
+            <div className="bg-purple-50 p-4 rounded-lg">
+              <h3 className="font-semibold text-purple-800 mb-2">Goal-based Investing</h3>
+              <p className="text-sm text-gray-700">Investment planning for specific financial goals</p>
+            </div>
+            <div className="bg-orange-50 p-4 rounded-lg">
+              <h3 className="font-semibold text-orange-800 mb-2">Risk Assessment</h3>
+              <p className="text-sm text-gray-700">Risk profiling and suitable fund selection</p>
+            </div>
+          </div>
         </div>
 
         {/* FAQ Section */}
@@ -140,7 +222,7 @@ const MutualFundPage = () => {
           <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
               <HelpCircle className="text-blue-600" size={20} />
-              સામાન્ય પ્રશ્નો
+              સામાન્ય પ્રશ્નો - Mutual Fund FAQ Deesa
             </h2>
             <FAQAccordion />
           </div>
@@ -155,8 +237,11 @@ const MutualFundPage = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              સંપર્ક કરો
+              મ્યુચ્યુઅલ ફંડ સેવાઓ માટે સંપર્ક કરો - Deesa, Banaskantha
             </h2>
+            <p className="text-gray-600 mb-6 text-sm sm:text-base">
+              દીસા, બનાસકાંઠાના અમારા મ્યુચ્યુઅલ ફંડ એક્સપર્ટ સાથે મફત સલાહ મેળવવા તમારી વિગતો આપો.
+            </p>
 
             <div className="space-y-4">
               <div>

@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ankitkachhawa.in/sitemap.xml
+
+# Specific pages
+Allow: /mutualfund
+Allow: /gst
+Allow: /updates
+Allow: /blogs/
+
+# Disallow admin or private areas (if any)
+# Disallow: /admin/

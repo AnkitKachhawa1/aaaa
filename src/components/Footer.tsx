@@ -7,10 +7,11 @@ const Footer: React.FC = () => {
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div className="fade-in">
-            <h3 className="text-lg font-semibold mb-4">About Us</h3>
+            <h3 className="text-lg font-semibold mb-4">About Ankit Kachhawa</h3>
             <p className="text-gray-400 mb-4 max-w-md">
-              We provide professional financial services including mutual fund advisory and GST filing services. 
-              Our expert team ensures you get the best financial guidance and compliance support.
+              Professional financial services provider in Deesa, Banaskantha, Gujarat. 
+              We offer expert GST filing, mutual fund advisory, and comprehensive financial planning services. 
+              Serving clients across Banaskantha district with reliable and trustworthy financial solutions.
             </p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/ankit.kachhawa.7" className="text-gray-400 hover:text-primary transition-colors" aria-label="Facebook">
@@ -41,7 +42,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="text-primary mr-3 mt-0.5 flex-shrink-0" />
-                <span className="text-gray-400">1st Floor,Pitrukrupa Shopping Centre,Deesa,Gujarat-385535</span>
+                <span className="text-gray-400">1st Floor, Pitrukrupa Shopping Centre, Deesa, Gujarat-385535</span>
               </li>
               <li className="mt-4">
                 <a
@@ -57,8 +58,24 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
+        {/* Service Areas */}
+        <div className="border-t border-gray-800 pt-6 mb-6">
+          <h4 className="text-md font-semibold mb-3 text-gray-300">Service Areas in Banaskantha District</h4>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm text-gray-500">
+            <span>Deesa (દીસા)</span>
+            <span>Palanpur (પાલનપુર)</span>
+            <span>Dhanera (ધાનેરા)</span>
+            <span>Tharad (થરાદ)</span>
+            <span>Vav (વાવ)</span>
+            <span>Danta (દાંતા)</span>
+            <span>Kankrej (કાંકરેજ)</span>
+            <span>Lakhani (લાખાણી)</span>
+          </div>
+        </div>
+        
         <div className="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} ANKIT KACHHAWA. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Ankit Kachhawa Financial Services. All rights reserved.</p>
+          <p className="mt-1">GST & Mutual Fund Expert in Deesa, Banaskantha, Gujarat</p>
         </div>
       </div>
     </footer>

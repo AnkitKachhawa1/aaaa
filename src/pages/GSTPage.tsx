@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, AlertTriangle, HelpCircle } from 'lucide-react';
+import { FileText, AlertTriangle, HelpCircle, MapPin, Phone, Mail } from 'lucide-react';
 
 const gstFaqItems = [
   {
@@ -122,15 +122,70 @@ const GSTPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="px-4 py-6 sm:px-6 lg:px-8">
         
-        {/* Introduction */}
+        {/* Hero Section with Local SEO */}
         <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+          <div className="text-center mb-6">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+              GST Services in Deesa, Banaskantha - Gujarat
+            </h1>
+            <p className="text-lg text-gray-600 mb-4">
+              Professional GST Filing & Registration Services by Ankit Kachhawa
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-4 text-sm text-gray-500">
+              <div className="flex items-center gap-1">
+                <MapPin size={16} className="text-blue-600" />
+                <span>Serving Deesa & Banaskantha District</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Phone size={16} className="text-green-600" />
+                <span>+91 95100 74375</span>
+              </div>
+            </div>
+          </div>
+          
           <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-            GST (Goods and Service Tax) એ ભારતમાં લાગુ કરાયેલ એક આધુનિક ટેક્સ સિસ્ટમ છે જે બિઝનેસને સરળ બનાવે છે. આ એક અગવડ એવી ટેક્સ છે જે રાજ્ય અને કેન્દ્ર સરકારની બહુવિધ ટેક્સને એકીકૃત કરે છે.
+            <strong>અંકિત કચ્છાવા</strong> દ્વારા દીસા, બનાસકાંઠા, ગુજરાતમાં વ્યાવસાયિક GST સેવાઓ. 
+            GST (Goods and Service Tax) એ ભારતમાં લાગુ કરાયેલ એક આધુનિક ટેક્સ સિસ્ટમ છે જે બિઝનેસને સરળ બનાવે છે. 
+            આ એક અગવડ એવી ટેક્સ છે જે રાજ્ય અને કેન્દ્ર સરકારની બહુવિધ ટેક્સને એકીકૃત કરે છે.
             <br /><br />
-            GST રજિસ્ટ્રેશન કરવાથી તમે કાયદેસર બિઝનેસ ચલાવી શકો છો, ઇનપુટ ટેક્સ ક્રેડિટ મેળવી શકો છો અને તમારા ગ્રાહકોને વેધ ઇનવોઇસ આપી શકો છો. આ તમારા બિઝનેસની વિશ્વસનીયતા વધારે છે.
+            <strong>દીસા અને બનાસકાંઠા જિલ્લામાં GST સેવાઓ:</strong> GST રજિસ્ટ્રેશન, રિટર્ન ફાઇલિંગ, કમ્પ્લાયન્સ, અને ટેક્સ કન્સલ્ટેશન. 
+            અમારી એક્સપર્ટ ટીમ તમારા બિઝનેસ માટે સંપૂર્ણ GST સોલ્યુશન પ્રદાન કરે છે.
             <br /><br />
-            અહીં તમને GST સંબંધિત બધી જરૂરી માહિતી, જરૂરી દસ્તાવેજો અને મહત્વના નિયમો વિશે જાણકારી મળશે. કોઈ પણ મદદ માટે અમારો સંપર્ક કરો.
+            <strong>કેમ પસંદ કરો અંકિત કચ્છાવાની GST સેવાઓ:</strong> સ્થાનિક એક્સપર્ટ, ઝડપી સેવા, કોમ્પિટિટિવ રેટ્સ, અને વિશ્વસનીય સપોર્ટ.
           </p>
+        </div>
+
+        {/* Local Service Areas */}
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
+            Service Areas - સેવા વિસ્તારો
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm">
+            <div className="bg-blue-50 p-3 rounded-lg text-center">
+              <strong>Deesa</strong><br />દીસા
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg text-center">
+              <strong>Palanpur</strong><br />પાલનપુર
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg text-center">
+              <strong>Dhanera</strong><br />ધાનેરા
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg text-center">
+              <strong>Tharad</strong><br />થરાદ
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg text-center">
+              <strong>Vav</strong><br />વાવ
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg text-center">
+              <strong>Danta</strong><br />દાંતા
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg text-center">
+              <strong>Kankrej</strong><br />કાંકરેજ
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg text-center">
+              <strong>Lakhani</strong><br />લાખાણી
+            </div>
+          </div>
         </div>
 
         {/* Documents Required Section */}
@@ -174,7 +229,7 @@ const GSTPage = () => {
           <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <HelpCircle className="text-blue-600" size={20} />
-              સામાન્ય પ્રશ્નો
+              સામાન્ય પ્રશ્નો - GST FAQ Deesa
             </h2>
             <FAQAccordion />
           </div>
@@ -189,10 +244,10 @@ const GSTPage = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              GST સેવાઓ માટે સંપર્ક કરો
+              GST સેવાઓ માટે સંપર્ક કરો - Deesa, Banaskantha
             </h2>
             <p className="text-gray-600 mb-6 text-sm sm:text-base">
-              અમારા GST નિષ્ણાતો સાથે મફત સલાહ મેળવવા તમારી વિગતો આપો.
+              દીસા, બનાસકાંઠાના અમારા GST નિષ્ણાતો સાથે મફત સલાહ મેળવવા તમારી વિગતો આપો.
             </p>
 
             <div className="space-y-4">
