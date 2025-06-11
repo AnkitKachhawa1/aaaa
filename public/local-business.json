@@ -1,0 +1,73 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Ankit Kachhawa Financial Services",
+  "description": "Professional GST filing and Mutual Fund investment services in Deesa, Banaskantha, Gujarat",
+  "url": "https://ankitkachhawa.in",
+  "telephone": "+91-95100-74375",
+  "email": "ankitkachchhawa@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1st Floor, Pitrukrupa Shopping Centre",
+    "addressLocality": "Deesa",
+    "addressRegion": "Gujarat",
+    "postalCode": "385535",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "24.2587",
+    "longitude": "72.1781"
+  },
+  "openingHours": [
+    "Mo-Sa 09:00-18:00"
+  ],
+  "priceRange": "₹₹",
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": "24.2587",
+      "longitude": "72.1781"
+    },
+    "geoRadius": "50000"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Financial Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "GST Registration & Filing Services",
+          "description": "Complete GST registration, return filing, and compliance services in Deesa, Banaskantha"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mutual Fund Investment Advisory",
+          "description": "SIP planning, mutual fund selection, and investment portfolio management in Gujarat"
+        }
+      }
+    ]
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Ankit Kachhawa",
+    "jobTitle": "Financial Advisor & GST Consultant",
+    "sameAs": [
+      "https://www.facebook.com/ankit.kachhawa.7",
+      "https://twitter.com/iAnkitKachhawa",
+      "https://instagram.com/Ankitkachhawa",
+      "https://www.linkedin.com/in/ankit-kachhawa-9964421a2"
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "25"
+  }
+}

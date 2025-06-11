@@ -1,0 +1,51 @@
+{
+  "name": "Ankit Kachhawa Financial Services",
+  "address": {
+    "streetAddress": "1st Floor, Pitrukrupa Shopping Centre",
+    "addressLocality": "Deesa",
+    "addressRegion": "Gujarat",
+    "postalCode": "385535",
+    "addressCountry": "India"
+  },
+  "telephone": "+91-95100-74375",
+  "email": "ankitkachchhawa@gmail.com",
+  "website": "https://ankitkachhawa.in",
+  "category": "Financial Services",
+  "subcategories": [
+    "Tax Consultant",
+    "Financial Advisor",
+    "Investment Service",
+    "Accounting Service"
+  ],
+  "description": "Professional GST filing, registration, and Mutual Fund investment advisory services in Deesa, Banaskantha, Gujarat. Expert financial guidance for individuals and businesses.",
+  "services": [
+    "GST Registration",
+    "GST Return Filing",
+    "GST Compliance",
+    "Mutual Fund Advisory",
+    "SIP Planning",
+    "Investment Planning",
+    "Tax Consultation",
+    "Financial Planning"
+  ],
+  "serviceAreas": [
+    "Deesa",
+    "Palanpur",
+    "Dhanera",
+    "Tharad",
+    "Vav",
+    "Danta",
+    "Kankrej",
+    "Lakhani",
+    "Banaskantha District"
+  ],
+  "hours": {
+    "monday": "09:00-18:00",
+    "tuesday": "09:00-18:00",
+    "wednesday": "09:00-18:00",
+    "thursday": "09:00-18:00",
+    "friday": "09:00-18:00",
+    "saturday": "09:00-18:00",
+    "sunday": "Closed"
+  }
+}

@@ -4,6 +4,7 @@ import Header from './Header';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import SEO from './SEO';
+import GoogleAnalytics from './GoogleAnalytics';
 
 const Layout: React.FC = () => {
   const location = useLocation();
@@ -37,6 +38,7 @@ const Layout: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <GoogleAnalytics />
       <SEO
         title={getPageTitle()}
         description={getPageDescription()}
