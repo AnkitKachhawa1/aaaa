@@ -156,39 +156,6 @@ const GSTPage = () => {
           </p>
         </div>
 
-        {/* Local Service Areas */}
-        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
-            Service Areas - સેવા વિસ્તારો
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm">
-            <div className="bg-blue-50 p-3 rounded-lg text-center">
-              <strong>Deesa</strong><br />ડીસા
-            </div>
-            <div className="bg-blue-50 p-3 rounded-lg text-center">
-              <strong>Palanpur</strong><br />પાલનપુર
-            </div>
-            <div className="bg-blue-50 p-3 rounded-lg text-center">
-              <strong>Dhanera</strong><br />ધાનેરા
-            </div>
-            <div className="bg-blue-50 p-3 rounded-lg text-center">
-              <strong>Tharad</strong><br />થરાદ
-            </div>
-            <div className="bg-blue-50 p-3 rounded-lg text-center">
-              <strong>Vav</strong><br />વાવ
-            </div>
-            <div className="bg-blue-50 p-3 rounded-lg text-center">
-              <strong>Danta</strong><br />દાંતા
-            </div>
-            <div className="bg-blue-50 p-3 rounded-lg text-center">
-              <strong>Kankrej</strong><br />કાંકરેજ
-            </div>
-            <div className="bg-blue-50 p-3 rounded-lg text-center">
-              <strong>Lakhani</strong><br />લાખણી
-            </div>
-          </div>
-        </div>
-
         {/* Documents Required Section */}
         <section className="mb-6">
           <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6">
