@@ -4,7 +4,7 @@ const gstDocumentList = {
   tag: "GST",
   date: "09/06/2025",
   // Optimized Cloudinary image URL for fast loading
-  image: "https://res.cloudinary.com/dzaxv5yhr/image/upload/f_auto,q_auto,w_800/samples/landscapes/architecture-signs",
+image: "https://res.cloudinary.com/dzaxv5yhr/image/upload/f_auto,q_auto,w_800/docgst_hu5ii1",
   content: `
     <p><strong>GST Registration</strong> માટે જરૂરી દસ્તાવેજોની સંપૂર્ણ યાદી અહીં આપવામાં આવી છે. આ યાદી મુજબ દસ્તાવેજો તૈયાર રાખો અને નોંધણી પ્રક્રિયા સરળ બનાવો.</p>
     
