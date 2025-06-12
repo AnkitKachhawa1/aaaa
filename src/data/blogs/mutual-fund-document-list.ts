@@ -3,7 +3,8 @@ const mutualFundDocumentList = {
   title: "Complete Mutual Fund Document Checklist for Registration",
   tag: "Mutual Fund",
   date: "10/06/2025",
-  image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg",
+  image: "https://res.cloudinary.com/dzaxv5yhr/image/upload/f_auto,q_auto,w_800/v1749734118/InShot_20250612_184329547_1_i0ijq1.jpg
+",
   content: `
     <p><strong>મ્યુચ્યુઅલ ફંડ માં રોકાણ કરવા માંગો છો?</strong> અહીં તમામ જરૂરી ડોક્યુમેન્ટ્સની સંપૂર્ણ યાદી આપવામાં આવી છે. આ બધા ડોક્યુમેન્ટ્સ તૈયાર રાખીને તમે સરળતાથી મ્યુચ્યુઅલ ફંડ એકાઉન્ટ ખોલાવી શકશો.</p>
     
