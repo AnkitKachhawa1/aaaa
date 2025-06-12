@@ -51,6 +51,13 @@ const Navigation: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Mobile swipe hint */}
+      <div className="md:hidden bg-gray-50 border-t border-gray-100 py-1">
+        <div className="text-center text-xs text-gray-500">
+          👈 Swipe left or right to navigate 👉
+        </div>
+      </div>
     </nav>
   );
 };

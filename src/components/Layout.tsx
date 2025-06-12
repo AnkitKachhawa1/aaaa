@@ -5,9 +5,15 @@ import Navigation from './Navigation';
 import Footer from './Footer';
 import SEO from './SEO';
 import GoogleAnalytics from './GoogleAnalytics';
+import SwipeIndicator from './SwipeIndicator';
+import { useSwipeNavigation } from '../hooks/useSwipeNavigation';
 
 const Layout: React.FC = () => {
   const location = useLocation();
+  
+  // Enable swipe navigation
+  useSwipeNavigation({ threshold: 75 });
+  
   const isGSTPage = location.pathname === '/gst';
   const isUpdatesPage = location.pathname === '/updates';
   const isMutualFundPage = location.pathname === '/mutualfund';
@@ -56,6 +62,9 @@ const Layout: React.FC = () => {
         </main>
         <Footer />
       </div>
+      
+      {/* Swipe indicator for mobile users */}
+      <SwipeIndicator />
     </div>
   );
 };
