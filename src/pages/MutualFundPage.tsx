@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HelpCircle, MapPin, Phone, TrendingUp } from 'lucide-react';
+import ServiceAreas from '../components/ServiceAreas';
 
 const faqItems = [
   {
@@ -229,7 +230,7 @@ const MutualFundPage = () => {
         </section>
 
         {/* Contact Form */}
-        <section>
+        <section className="mb-8">
           <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <div className="bg-gradient-to-r from-green-500 to-blue-500 p-1 rounded-full">
@@ -286,6 +287,9 @@ const MutualFundPage = () => {
             </div>
           </div>
         </section>
+
+        {/* Service Areas Section */}
+        <ServiceAreas service="mutual-fund" />
       </div>
     </div>
   );
