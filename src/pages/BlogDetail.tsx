@@ -25,6 +25,9 @@ const BlogDetail = () => {
     return plainText.slice(0, 160) + (plainText.length > 160 ? '...' : '');
   };
 
+  // Helper to check for Cloudinary URL
+  const isCloudinary = blog.image && blog.image.includes("res.cloudinary.com");
+
   return (
     <>
       <Helmet>
@@ -64,11 +67,32 @@ const BlogDetail = () => {
       </Helmet>
       
       <div style={{ maxWidth: 800, margin: "40px auto", padding: 24, background: "#fff", borderRadius: 16, boxShadow: "0 4px 24px rgba(0,0,0,0.10)" }}>
-        <img
-          src={blog.image}
-          alt={blog.title}
-          style={{ width: "100%", borderRadius: 12, marginBottom: 24, maxHeight: 360, objectFit: "cover" }}
-        />
+        {/* Optimized Cloudinary image or fallback */}
+        {isCloudinary ? (
+          <img
+            src={blog.image}
+            srcSet={`
+              ${blog.image.replace('/upload/', '/upload/f_auto,q_auto,w_400/')} 400w,
+              ${blog.image.replace('/upload/', '/upload/f_auto,q_auto,w_800/')} 800w
+            `}
+            sizes="(max-width: 600px) 400px, 800px"
+            alt={blog.title}
+            width="800"
+            height="533"
+            style={{ width: "100%", borderRadius: 12, marginBottom: 24, maxHeight: 360, objectFit: "cover" }}
+            loading="lazy"
+          />
+        ) : (
+          <img
+            src={blog.image}
+            alt={blog.title}
+            width="800"
+            height="533"
+            style={{ width: "100%", borderRadius: 12, marginBottom: 24, maxHeight: 360, objectFit: "cover" }}
+            loading="lazy"
+          />
+        )}
+
         <h2 style={{ fontWeight: 900, fontSize: 36, marginBottom: 24 }}>{blog.title}</h2>
         
         {/* Blog metadata */}
@@ -108,9 +132,10 @@ const BlogDetail = () => {
                 gap: 8
               }}
             >
+              {/* WhatsApp SVG */}
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z"/>
-                <path d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+                <path d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.9..."/>
+                <path d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-...."/>
               </svg>
               WhatsApp
             </a>
@@ -132,6 +157,7 @@ const BlogDetail = () => {
                 gap: 8
               }}
             >
+              {/* Facebook SVG */}
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z"/>
               </svg>
@@ -155,8 +181,9 @@ const BlogDetail = () => {
                 gap: 8
               }}
             >
+              {/* Twitter SVG */}
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z"/>
+                <path d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11..."/>
               </svg>
               Twitter
             </a>
@@ -177,8 +204,9 @@ const BlogDetail = () => {
                 gap: 8
               }}
             >
+              {/* Copy Link SVG */}
               <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 ..."/>
               </svg>
               Copy Link
             </button>
