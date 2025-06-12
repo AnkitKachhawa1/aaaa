@@ -3,9 +3,10 @@ const gstDocumentList = {
   title: "Complete GST Document Checklist for Registration",
   tag: "GST",
   date: "09/06/2025",
-  image: "https://images.pexels.com/photos/5717704/pexels-photo-5717704.jpeg",
+  // Optimized Cloudinary image URL for fast loading
+  image: "https://res.cloudinary.com/dzaxv5yhr/image/upload/f_auto,q_auto,w_800/samples/landscapes/architecture-signs",
   content: `
-    <p><strong>GST Registration</strong> માટે જરૂરી દસ્તાવેજોની સંપૂર્ણ યાદી અહીં આપવામાં આવી છે. આ બધા દસ્તાવેજો તૈયાર રાખીને તમે ઝડપથી GST રજિસ્ટ્રેશન કરાવી શકશો.</p>
+    <p><strong>GST Registration</strong> માટે જરૂરી દસ્તાવેજોની સંપૂર્ણ યાદી અહીં આપવામાં આવી છે. આ યાદી મુજબ દસ્તાવેજો તૈયાર રાખો અને નોંધણી પ્રક્રિયા સરળ બનાવો.</p>
     
     <h3>વ્યક્તિગત દસ્તાવેજો</h3>
     <ul>
@@ -39,12 +40,12 @@ const gstDocumentList = {
     <ul>
       <li><strong>ધંધા ના સ્થળ નું લાઈટ બિલ</strong> - બિજળીનું બિલ (છેલ્લા 2 મહિના)</li>
       <li><strong>ધંધા ના સ્થળ નું આકારણી પત્રક</strong> - પ્રોપર્ટી ટેક્સ બિલ</li>
-      <li><strong>જો ધંધાનું સ્થળ ભાડે હોય તો ₹300 ને સ્ટેમ્પ પર ભાડા કરાર</strong> - રેન્ટ એગ્રીમેન્ટ (સ્ટેમ્પ પેપર પર)</li>
+      <li><strong>જો ધંધાનું સ્થળ ભાડે હોય તો ₹300 ને સ્ટેમ્પ પર ભાડા કરાર</strong> - રેન્ટ એગ્રીમેન્ટ</li>
     </ul>
     
     <div style="background: linear-gradient(135deg, #ff6b6b, #4ecdc4); padding: 20px; border-radius: 12px; margin: 24px 0; color: white;">
       <h3 style="color: white; margin-top: 0;">⚠️ મહત્વપૂર્ણ નોંધ:</h3>
-      <p style="margin: 0;"><strong>આધાર કાર્ડમાં મોબાઈલ નંબર લિંક હોવું જરૂરી</strong> - GST નોંધણી પ્રક્રિયા દરમિયાન OTP વેરિફિકેશન માટે આધાર કાર્ડ સાથે લિંક થયેલ મોબાઇલ નંબર જરૂરી છે.</p>
+      <p style="margin: 0;"><strong>આધાર કાર્ડમાં મોબાઈલ નંબર લિંક હોવું જરૂરી</strong> - GST નોંધણી પ્રક્રિયા માટે આધાર કાર્ડ સાથે જોડાયેલ મોબાઇલ નંબર ફરજિયાત છે.</p>
     </div>
     
     <h3>મહત્વની વાતો</h3>
